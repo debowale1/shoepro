@@ -102,7 +102,7 @@ const HomeScreen = () => {
 			</div>
 			<div className="row small-gutters">
 					{products.map(product => (
-           <Product product={product} />
+           <Product key={product._id} product={product} />
           ))}
 					{/* <!-- /grid_item --> */}
 				{/* <!-- /col --> */}				

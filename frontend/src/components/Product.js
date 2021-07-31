@@ -1,4 +1,5 @@
 import React from 'react'
+import Rating from './Rating'
 
 const Product = ({product}) => {
   return (
@@ -6,13 +7,13 @@ const Product = ({product}) => {
     <div className="grid_item">
     <figure>
       <span className="ribbon off">-30%</span>
-      <a href="product-detail-1.html">
-        <img className="img-fluid lazy" src={`images/${product._id}.jpg`} data-src={`images/${product._id}_b.jpg`} alt=""/>
-        <img className="img-fluid lazy" src={`images/${product._id}_b.jpg`} data-src={`images/${product._id}_b.jpg`} alt=""/>
+      <a href={`/product/${product._id}`}>
+        <img className="img-fluid lazy" src={product.images[0]} data-src={product.images[0]} alt=""/>
+        <img className="img-fluid lazy" src={product.images[1]} data-src={product.images[1]} alt=""/>
       </a>
       <div data-countdown="2019/05/15" className="countdown"></div>
     </figure>
-    <div className="rating"><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star"></i></div>
+    <Rating rating={product.rating} numReviews={product.numReviews}/>
     <a href={`/product/${product._id}`}>
       <h3>{product.name}</h3>
     </a>
