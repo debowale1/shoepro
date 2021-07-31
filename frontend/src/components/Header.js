@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import logo from './../logo.svg'
 
 const Header = () => {
@@ -10,7 +11,9 @@ const Header = () => {
 				<div className="row small-gutters">
 					<div className="col-xl-3 col-lg-3 d-lg-flex align-items-center">
 						<div id="logo">
-							<a href="/"><img src={logo} alt="" width="100" height="35" /></a>
+							<Link to="/">
+								<img src={logo} alt="" width="100" height="35" />
+							</Link>
 						</div>
 					</div>
 					<nav className="col-xl-6 col-lg-7">
@@ -31,16 +34,16 @@ const Header = () => {
 							</div>
 							<ul>
 								<li>
-									<a href="/">Home</a>
+									<Link to="/">Home</Link>
 								</li>
 								<li>
-									<a href="/shop">Shop</a>
+									<Link to="/shop">Shop</Link>
 								</li>
 								<li>
-									<a href="/cart">Cart</a>
+									<Link to="/cart">Cart</Link>
 								</li>
 								<li>
-									<a href="checkout">Checkout</a>
+									<Link to="/checkout">Checkout</Link>
 								</li>
 							</ul>
 						</div>
