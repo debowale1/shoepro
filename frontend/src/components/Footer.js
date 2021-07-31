@@ -70,7 +70,7 @@ const Footer = () => {
 						<li>
 							<div className="styled-select lang-selector">
 								<select>
-									<option value="English" selected>English</option>
+									<option value="English" defaultValue>English</option>
 									<option value="French">French</option>
 									<option value="Spanish">Spanish</option>
 									<option value="Russian">Russian</option>
@@ -80,7 +80,7 @@ const Footer = () => {
 						<li>
 							<div className="styled-select currency-selector">
 								<select>
-									<option value="US Dollars" selected>US Dollars</option>
+									<option value="US Dollars" defaultChecked>US Dollars</option>
 									<option value="Euro">Euro</option>
 								</select>
 							</div>
