@@ -11,13 +11,13 @@ const productSchema = Schema({
   },
   name: {
     type: String,
-    required: [true, 'A user must have a name'],
+    required: [true, 'A product must have a name'],
     trim: true,
   },
   slug: String,
-  images: {
-    type: [String],
-    required: [true, 'A user must have an email'],    
+  image: {
+    type: String,
+    required: [true, 'Product must have an image'],    
   },
   brand: {
     type: String,
