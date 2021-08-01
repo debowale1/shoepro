@@ -9,7 +9,7 @@ const Rating = ({rating, numReviews}) => {
       <i className = {rating >= 3 ? 'icon-star voted' : 'icon-star'}></i>
       <i className = {rating >= 4 ? 'icon-star voted' : 'icon-star'}></i>
       <i className = {rating >= 5 ? 'icon-star voted' : 'icon-star'}></i>
-      <p>{`out of (${numReviews})`}</p>
+      <em>{`out of (${numReviews})`}</em>
     </div>
   )
 }
