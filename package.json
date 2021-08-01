@@ -1,0 +1,29 @@
+{
+  "name": "shoepro",
+  "version": "1.0.0",
+  "description": "Mern app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/debowale1/shoepro.git"
+  },
+  "keywords": [
+    "express",
+    "react",
+    "redux",
+    "mongodb",
+    "node"
+  ],
+  "author": "adeshina ibrahim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/debowale1/shoepro/issues"
+  },
+  "homepage": "https://github.com/debowale1/shoepro#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -1,8 +1,22 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Product from './../components/Product'
-import products from './../products'
+import axios from 'axios'
+// import products from './../products'
 
 const HomeScreen = () => {
+	const [products, setProducts] = useState([])
+
+	useEffect(() => {
+		const fetchProducts = async ()  => {
+			const res = await axios.get('/api/v1/products');
+			const {data} = await res.data
+			setProducts(data.products)
+		}
+		fetchProducts()
+	}, [])
+
+
+
   return (
     <>
     <div id="carousel-home">
