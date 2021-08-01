@@ -51,6 +51,10 @@ const productSchema = Schema({
     required: true,
     default: 0,
   },
+},{
+  timeStamps: true,
+  toJSON: {virtuals: true},
+  toObject: {virtuals: true},
 })
 
 const Product = new mongoose.model('Product', productSchema)
