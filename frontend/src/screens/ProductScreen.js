@@ -15,40 +15,40 @@ const ProductScreen = ({match}) => {
   // const product = products.find(p => p._id === match.params.id)
   return (
     <>
-      <div class="container margin_30">
-	        <div class="countdown_inner">-20% This offer ends in <div data-countdown="2019/05/15" class="countdown"></div>
+      <div className="container margin_30">
+	        <div className="countdown_inner">-20% This offer ends in <div data-countdown="2019/05/15" className="countdown"></div>
 	        </div>
-	        <div class="row">
-	            <div class="col-md-6">
-	                <div class="all">
-	                    <div class="slider">
-	                        <div class="owl-carousel owl-theme main">
-	                            <div style={{backgroundImage: `url(/images/1.jpg)`}} class="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/2.jpg)`}} class="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/3.jpg)`}} class="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/4.jpg)`}} class="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/5.jpg)`}} class="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/6.jpg)`}} class="item-box"></div>
+	        <div className="row">
+	            <div className="col-md-6">
+	                <div className="all">
+	                    <div className="slider">
+	                        <div className="owl-carousel owl-theme main">
+	                            <div style={{backgroundImage: `url(/images/1.jpg)`}} className="item-box"></div>
+	                            <div style={{backgroundImage: `url(/images/2.jpg)`}} className="item-box"></div>
+	                            <div style={{backgroundImage: `url(/images/3.jpg)`}} className="item-box"></div>
+	                            <div style={{backgroundImage: `url(/images/4.jpg)`}} className="item-box"></div>
+	                            <div style={{backgroundImage: `url(/images/5.jpg)`}} className="item-box"></div>
+	                            <div style={{backgroundImage: `url(/images/6.jpg)`}} className="item-box"></div>
 	                        </div>
-	                        <div class="left nonl"><i class="ti-angle-left"></i></div>
-	                        <div class="right"><i class="ti-angle-right"></i></div>
+	                        <div className="left nonl"><i className="ti-angle-left"></i></div>
+	                        <div className="right"><i className="ti-angle-right"></i></div>
 	                    </div>
-	                    <div class="slider-two">
-	                        <div class="owl-carousel owl-theme thumbs">
-	                            <div style={{backgroundImage: `url(images/1.jpg)`}} class="item active"></div>
-	                            <div style={{backgroundImage: `url(/images/1.jpg)`}} class="item"></div>
-	                            <div style={{backgroundImage: `url(/images/2.jpg)`}} class="item"></div>
-	                            <div style={{backgroundImage: `url(/images/3.jpg)`}} class="item"></div>
-	                            <div style={{backgroundImage: `url(/images/4.jpg)`}} class="item"></div>
-	                            <div style={{backgroundImage: `url(/images/5.jpg)`}} class="item"></div>
+	                    <div className="slider-two">
+	                        <div className="owl-carousel owl-theme thumbs">
+	                            <div style={{backgroundImage: `url(images/1.jpg)`}} className="item active"></div>
+	                            <div style={{backgroundImage: `url(/images/1.jpg)`}} className="item"></div>
+	                            <div style={{backgroundImage: `url(/images/2.jpg)`}} className="item"></div>
+	                            <div style={{backgroundImage: `url(/images/3.jpg)`}} className="item"></div>
+	                            <div style={{backgroundImage: `url(/images/4.jpg)`}} className="item"></div>
+	                            <div style={{backgroundImage: `url(/images/5.jpg)`}} className="item"></div>
 	                        </div>
-	                        <div class="left-t nonl-t"></div>
-	                        <div class="right-t"></div>
+	                        <div className="left-t nonl-t"></div>
+	                        <div className="right-t"></div>
 	                    </div>
 	                </div>
 	            </div>
-	            <div class="col-md-6">
-	                <div class="breadcrumbs">
+	            <div className="col-md-6">
+	                <div className="breadcrumbs">
 	                    <ul>
 	                        <li><a href="#">Home</a></li>
 	                        <li><a href="#">Category</a></li>
@@ -56,29 +56,29 @@ const ProductScreen = ({match}) => {
 	                    </ul>
 	                </div>
 	                {/* <!-- /page_header --> */}
-	                <div class="prod_info">
+	                <div className="prod_info">
 	                    <h1>{product.name}</h1>
                       <Rating rating={product.rating} numReviews={product.numReviews} />
 	                    <p>
                         <small>SKU: MTKRY-001</small><br/>{product.description}
                       </p>
-	                    <div class="prod_options">
-	                        <div class="row">
-	                            <label class="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
-	                            <div class="col-xl-4 col-lg-5 col-md-6 col-6 colors">
+	                    <div className="prod_options">
+	                        <div className="row">
+	                            <label className="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
+	                            <div className="col-xl-4 col-lg-5 col-md-6 col-6 colors">
 	                                <ul>
-	                                    <li><a href="#" class="color color_1 active"></a></li>
-	                                    <li><a href="#0" class="color color_2"></a></li>
-	                                    <li><a href="#0" class="color color_3"></a></li>
-	                                    <li><a href="#0" class="color color_4"></a></li>
+	                                    <li><a href="#" className="color color_1 active"></a></li>
+	                                    <li><a href="#0" className="color color_2"></a></li>
+	                                    <li><a href="#0" className="color color_3"></a></li>
+	                                    <li><a href="#0" className="color color_4"></a></li>
 	                                </ul>
 	                            </div>
 	                        </div>
-	                        <div class="row">
-	                            <label class="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Size</strong> - Size Guide <a href="#0" data-toggle="modal" data-target="#size-modal"><i class="ti-help-alt"></i></a></label>
-	                            <div class="col-xl-4 col-lg-5 col-md-6 col-6">
-	                                <div class="custom-select-form">
-	                                    <select class="nice-select wide">
+	                        <div className="row">
+	                            <label className="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Size</strong> - Size Guide <a href="#0" data-toggle="modal" data-target="#size-modal"><i className="ti-help-alt"></i></a></label>
+	                            <div className="col-xl-4 col-lg-5 col-md-6 col-6">
+	                                <div className="custom-select-form">
+	                                    <select className="nice-select wide">
 	                                        <option value="" defaultValue>Small (S)</option>
 	                                        <option value="">M</option>
 	                                        <option value=" ">L</option>
@@ -87,34 +87,34 @@ const ProductScreen = ({match}) => {
 	                                </div>
 	                            </div>
 	                        </div>
-	                        <div class="row">
-	                            <label class="col-xl-5 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
-	                            <div class="col-xl-4 col-lg-5 col-md-6 col-6">
-	                                <div class="numbers-row">
-	                                    <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1"/>
-                                      <div class="inc button_inc">+</div>
-                                      <div class="dec button_inc">-</div>
+	                        <div className="row">
+	                            <label className="col-xl-5 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
+	                            <div className="col-xl-4 col-lg-5 col-md-6 col-6">
+	                                <div className="numbers-row">
+	                                    <input type="text" value="1" id="quantity_1" className="qty2" name="quantity_1"/>
+                                      <div className="inc button_inc">+</div>
+                                      <div className="dec button_inc">-</div>
 	                                </div>
 	                            </div>
 	                        </div>
 	                    </div>
-	                    <div class="row">
-	                        <div class="col-lg-5 col-md-6">
-	                            <div class="price_main"><span class="new_price">${product.price }</span><span class="percentage">-20%</span> <span class="old_price">$160.00</span></div>
+	                    <div className="row">
+	                        <div className="col-lg-5 col-md-6">
+	                            <div className="price_main"><span className="new_price">${product.price }</span><span className="percentage">-20%</span> <span className="old_price">$160.00</span></div>
 	                        </div>
-	                        <div class="col-lg-4 col-md-6">
-	                            <div class="btn_add_to_cart"><a href="#0" class="btn_1">Add to Cart</a></div>
+	                        <div className="col-lg-4 col-md-6">
+	                            <div className="btn_add_to_cart"><a href="#0" className="btn_1">Add to Cart</a></div>
 	                        </div>
 	                    </div>
 	                </div>
 	                {/* <!-- /prod_info --> */}
-	                <div class="product_actions">
+	                <div className="product_actions">
 	                    <ul>
 	                        <li>
-	                            <a href="#"><i class="ti-heart"></i><span>Add to Wishlist</span></a>
+	                            <a href="#"><i className="ti-heart"></i><span>Add to Wishlist</span></a>
 	                        </li>
 	                        <li>
-	                            <a href="#"><i class="ti-control-shuffle"></i><span>Add to Compare</span></a>
+	                            <a href="#"><i className="ti-control-shuffle"></i><span>Add to Compare</span></a>
 	                        </li>
 	                    </ul>
 	                </div>
@@ -125,43 +125,43 @@ const ProductScreen = ({match}) => {
 	    </div>
 	    {/* <!-- /container --> */}
 	    
-	    <div class="tabs_product">
-	        <div class="container">
-	            <ul class="nav nav-tabs" role="tablist">
-	                <li class="nav-item">
-	                    <a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab" role="tab">Description</a>
+	    <div className="tabs_product">
+	        <div className="container">
+	            <ul className="nav nav-tabs" role="tablist">
+	                <li className="nav-item">
+	                    <a id="tab-A" href="#pane-A" className="nav-link active" data-toggle="tab" role="tab">Description</a>
 	                </li>
-	                <li class="nav-item">
-	                    <a id="tab-B" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">Reviews</a>
+	                <li className="nav-item">
+	                    <a id="tab-B" href="#pane-B" className="nav-link" data-toggle="tab" role="tab">Reviews</a>
 	                </li>
 	            </ul>
 	        </div>
 	    </div>
 	    {/* <!-- /tabs_product --> */}
-	    <div class="tab_content_wrapper">
-	        <div class="container">
-	            <div class="tab-content" role="tablist">
-	                <div id="pane-A" class="card tab-pane fade active show" role="tabpanel" aria-labelledby="tab-A">
-	                    <div class="card-header" role="tab" id="heading-A">
-	                        <h5 class="mb-0">
-	                            <a class="collapsed" data-toggle="collapse" href="#collapse-A" aria-expanded="false" aria-controls="collapse-A">
+	    <div className="tab_content_wrapper">
+	        <div className="container">
+	            <div className="tab-content" role="tablist">
+	                <div id="pane-A" className="card tab-pane fade active show" role="tabpanel" aria-labelledby="tab-A">
+	                    <div className="card-header" role="tab" id="heading-A">
+	                        <h5 className="mb-0">
+	                            <a className="collapsed" data-toggle="collapse" href="#collapse-A" aria-expanded="false" aria-controls="collapse-A">
 	                                Description
 	                            </a>
 	                        </h5>
 	                    </div>
-	                    <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
-	                        <div class="card-body">
-	                            <div class="row justify-content-between">
-	                                <div class="col-lg-6">
+	                    <div id="collapse-A" className="collapse" role="tabpanel" aria-labelledby="heading-A">
+	                        <div className="card-body">
+	                            <div className="row justify-content-between">
+	                                <div className="col-lg-6">
 	                                    <h3>Details</h3>
 	                                    <p>Lorem ipsum dolor sit amet, in eleifend <strong>inimicus elaboraret</strong> his, harum efficiendi mel ne. Sale percipit vituperata ex mel, sea ne essent aeterno sanctus, nam ea laoreet civibus electram. Ea vis eius explicari. Quot iuvaret ad has.</p>
 	                                    <p>Vis ei ipsum conclusionemque. Te enim suscipit recusabo mea, ne vis mazim aliquando, everti insolens at sit. Cu vel modo unum quaestio, in vide dicta has. Ut his laudem explicari adversarium, nisl <strong>laboramus hendrerit</strong> te his, alia lobortis vis ea.</p>
 	                                    <p>Perfecto eleifend sea no, cu audire voluptatibus eam. An alii praesent sit, nobis numquam principes ea eos, cu autem constituto suscipiantur eam. Ex graeci elaboraret pro. Mei te omnis tantas, nobis viderer vivendo ex has.</p>
 	                                </div>
-	                                <div class="col-lg-5">
+	                                <div className="col-lg-5">
 	                                    <h3>Specifications</h3>
-	                                    <div class="table-responsive">
-	                                        <table class="table table-sm table-striped">
+	                                    <div className="table-responsive">
+	                                        <table className="table table-sm table-striped">
 	                                            <tbody>
 	                                                <tr>
 	                                                    <td><strong>Color</strong></td>
@@ -189,31 +189,31 @@ const ProductScreen = ({match}) => {
 	                    </div>
 	                </div>
 	                {/* <!-- /TAB A --> */}
-	                <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
-	                    <div class="card-header" role="tab" id="heading-B">
-	                        <h5 class="mb-0">
-	                            <a class="collapsed" data-toggle="collapse" href="#collapse-B" aria-expanded="false" aria-controls="collapse-B">
+	                <div id="pane-B" className="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
+	                    <div className="card-header" role="tab" id="heading-B">
+	                        <h5 className="mb-0">
+	                            <a className="collapsed" data-toggle="collapse" href="#collapse-B" aria-expanded="false" aria-controls="collapse-B">
 	                                Reviews
 	                            </a>
 	                        </h5>
 	                    </div>
-	                    <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
-	                        <div class="card-body">
-	                            <div class="row justify-content-between">
-	                                <div class="col-lg-6">
-	                                    <div class="review_content">
-	                                        <div class="clearfix add_bottom_10">
-	                                            <span class="rating"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><em>5.0/5.0</em></span>
+	                    <div id="collapse-B" className="collapse" role="tabpanel" aria-labelledby="heading-B">
+	                        <div className="card-body">
+	                            <div className="row justify-content-between">
+	                                <div className="col-lg-6">
+	                                    <div className="review_content">
+	                                        <div className="clearfix add_bottom_10">
+	                                            <span className="rating"><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star"></i><em>5.0/5.0</em></span>
 	                                            <em>Published 54 minutes ago</em>
 	                                        </div>
 	                                        <h4>"Commpletely satisfied"</h4>
 	                                        <p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his.</p>
 	                                    </div>
 	                                </div>
-	                                <div class="col-lg-6">
-	                                    <div class="review_content">
-	                                        <div class="clearfix add_bottom_10">
-	                                            <span class="rating"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star empty"></i><i class="icon-star empty"></i><em>4.0/5.0</em></span>
+	                                <div className="col-lg-6">
+	                                    <div className="review_content">
+	                                        <div className="clearfix add_bottom_10">
+	                                            <span className="rating"><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star empty"></i><i className="icon-star empty"></i><em>4.0/5.0</em></span>
 	                                            <em>Published 1 day ago</em>
 	                                        </div>
 	                                        <h4>"Always the best"</h4>
@@ -222,21 +222,21 @@ const ProductScreen = ({match}) => {
 	                                </div>
 	                            </div>
 	                            {/* <!-- /row --> */}
-	                            <div class="row justify-content-between">
-	                                <div class="col-lg-6">
-	                                    <div class="review_content">
-	                                        <div class="clearfix add_bottom_10">
-	                                            <span class="rating"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star empty"></i><em>4.5/5.0</em></span>
+	                            <div className="row justify-content-between">
+	                                <div className="col-lg-6">
+	                                    <div className="review_content">
+	                                        <div className="clearfix add_bottom_10">
+	                                            <span className="rating"><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star empty"></i><em>4.5/5.0</em></span>
 	                                            <em>Published 3 days ago</em>
 	                                        </div>
 	                                        <h4>"Outstanding"</h4>
 	                                        <p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his.</p>
 	                                    </div>
 	                                </div>
-	                                <div class="col-lg-6">
-	                                    <div class="review_content">
-	                                        <div class="clearfix add_bottom_10">
-	                                            <span class="rating"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><em>5.0/5.0</em></span>
+	                                <div className="col-lg-6">
+	                                    <div className="review_content">
+	                                        <div className="clearfix add_bottom_10">
+	                                            <span className="rating"><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star"></i><i className="icon-star"></i><em>5.0/5.0</em></span>
 	                                            <em>Published 4 days ago</em>
 	                                        </div>
 	                                        <h4>"Excellent"</h4>
@@ -245,7 +245,7 @@ const ProductScreen = ({match}) => {
 	                                </div>
 	                            </div>
 	                            {/* <!-- /row --> */}
-	                            <p class="text-right"><a href="leave-review.html" class="btn_1">Leave a review</a></p>
+	                            <p className="text-right"><a href="leave-review.html" className="btn_1">Leave a review</a></p>
 	                        </div>
 	                        {/* <!-- /card-body --> */}
 	                    </div>
@@ -258,130 +258,130 @@ const ProductScreen = ({match}) => {
 	    </div>
 	    {/* <!-- /tab_content_wrapper --> */}
 
-	    <div class="container margin_60_35">
-	        <div class="main_title">
+	    <div className="container margin_60_35">
+	        <div className="main_title">
 	            <h2>Related</h2>
 	            <span>Products</span>
 	            <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
 	        </div>
-	        <div class="owl-carousel owl-theme products_carousel">
-	            <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon new">New</span>
+	        <div className="owl-carousel owl-theme products_carousel">
+	            <div className="item">
+	                <div className="grid_item">
+	                    <span className="ribbon new">New</span>
 	                    <figure>
 	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/4.jpg" alt=""/>
+	                            <img className="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/4.jpg" alt=""/>
 	                        </a>
 	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+	                    <div className="rating"><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star"></i></div>
 	                    <a href="product-detail-1.html">
 	                        <h3>ACG React Terra</h3>
 	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$110.00</span>
+	                    <div className="price_box">
+	                        <span className="new_price">$110.00</span>
 	                    </div>
 	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i className="ti-heart"></i><span>Add to favorites</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i className="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i className="ti-shopping-cart"></i><span>Add to cart</span></a></li>
 	                    </ul>
 	                </div>
 	                {/* <!-- /grid_item --> */}
 	            </div>
 	            {/* <!-- /item --> */}
-	            <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon new">New</span>
+	            <div className="item">
+	                <div className="grid_item">
+	                    <span className="ribbon new">New</span>
 	                    <figure>
 	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/5.jpg" alt=""/>
+	                            <img className="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/5.jpg" alt=""/>
 	                        </a>
 	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+	                    <div className="rating"><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star"></i></div>
 	                    <a href="product-detail-1.html">
 	                        <h3>Air Zoom Alpha</h3>
 	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$140.00</span>
+	                    <div className="price_box">
+	                        <span className="new_price">$140.00</span>
 	                    </div>
 	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i className="ti-heart"></i><span>Add to favorites</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i className="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i className="ti-shopping-cart"></i><span>Add to cart</span></a></li>
 	                    </ul>
 	                </div>
 	                {/* <!-- /grid_item --> */}
 	            </div>
 	            {/* <!-- /item --> */}
-	            <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon hot">Hot</span>
+	            <div className="item">
+	                <div className="grid_item">
+	                    <span className="ribbon hot">Hot</span>
 	                    <figure>
 	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/8.jpg" alt=""/>
+	                            <img className="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/8.jpg" alt=""/>
 	                        </a>
 	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+	                    <div className="rating"><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star"></i></div>
 	                    <a href="product-detail-1.html">
 	                        <h3>Air Color 720</h3>
 	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$120.00</span>
+	                    <div className="price_box">
+	                        <span className="new_price">$120.00</span>
 	                    </div>
 	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i className="ti-heart"></i><span>Add to favorites</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i className="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i className="ti-shopping-cart"></i><span>Add to cart</span></a></li>
 	                    </ul>
 	                </div>
 	                {/* <!-- /grid_item --> */}
 	            </div>
 	            {/* <!-- /item --> */}
-	            <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon off">-30%</span>
+	            <div className="item">
+	                <div className="grid_item">
+	                    <span className="ribbon off">-30%</span>
 	                    <figure>
 	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/2.jpg" alt=""/>
+	                            <img className="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/2.jpg" alt=""/>
 	                        </a>
 	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+	                    <div className="rating"><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star"></i></div>
 	                    <a href="product-detail-1.html">
 	                        <h3>Okwahn II</h3>
 	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$90.00</span>
-	                        <span class="old_price">$170.00</span>
+	                    <div className="price_box">
+	                        <span className="new_price">$90.00</span>
+	                        <span className="old_price">$170.00</span>
 	                    </div>
 	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i className="ti-heart"></i><span>Add to favorites</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i className="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i className="ti-shopping-cart"></i><span>Add to cart</span></a></li>
 	                    </ul>
 	                </div>
 	                {/* <!-- /grid_item --> */}
 	            </div>
 	            {/* <!-- /item --> */}
-	            <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon off">-50%</span>
+	            <div className="item">
+	                <div className="grid_item">
+	                    <span className="ribbon off">-50%</span>
 	                    <figure>
 	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/3.jpg" alt=""/>
+	                            <img className="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/3.jpg" alt=""/>
 	                        </a>
 	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+	                    <div className="rating"><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star voted"></i><i className="icon-star"></i></div>
 	                    <a href="product-detail-1.html">
 	                        <h3>Air Wildwood ACG</h3>
 	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$75.00</span>
-	                        <span class="old_price">$155.00</span>
+	                    <div className="price_box">
+	                        <span className="new_price">$75.00</span>
+	                        <span className="old_price">$155.00</span>
 	                    </div>
 	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i className="ti-heart"></i><span>Add to favorites</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i className="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+	                        <li><a href="#0" className="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i className="ti-shopping-cart"></i><span>Add to cart</span></a></li>
 	                    </ul>
 	                </div>
 	                {/* <!-- /grid_item --> */}
@@ -392,31 +392,31 @@ const ProductScreen = ({match}) => {
 	    </div>
 	    {/* <!-- /container --> */}
 
-	    <div class="feat">
-			<div class="container">
+	    <div className="feat">
+			<div className="container">
 				<ul>
 					<li>
-						<div class="box">
-							<i class="ti-gift"></i>
-							<div class="justify-content-center">
+						<div className="box">
+							<i className="ti-gift"></i>
+							<div className="justify-content-center">
 								<h3>Free Shipping</h3>
 								<p>For all oders over $99</p>
 							</div>
 						</div>
 					</li>
 					<li>
-						<div class="box">
-							<i class="ti-wallet"></i>
-							<div class="justify-content-center">
+						<div className="box">
+							<i className="ti-wallet"></i>
+							<div className="justify-content-center">
 								<h3>Secure Payment</h3>
 								<p>100% secure payment</p>
 							</div>
 						</div>
 					</li>
 					<li>
-						<div class="box">
-							<i class="ti-headphone-alt"></i>
-							<div class="justify-content-center">
+						<div className="box">
+							<i className="ti-headphone-alt"></i>
+							<div className="justify-content-center">
 								<h3>24/7 Support</h3>
 								<p>Online top support</p>
 							</div>
