@@ -22,16 +22,16 @@ const userSchema = Schema({
     type: String,
     required: [true, 'User must provide a password'],
   },
-  passwordConfirm: {
-    type: String,
-    required: [true, "Please confirm your password"],
-    validate: {
-      validator: function(el){
-        return el === this.password
-      },
-      message: "Passwords dont match"
-    }
-  },
+  // passwordConfirm: {
+  //   type: String,
+  //   required: [true, "Please confirm your password"],
+  //   validate: {
+  //     validator: function(el){
+  //       return el === this.password
+  //     },
+  //     message: "Passwords dont match"
+  //   }
+  // },
   role: {
     type: String,
     enum: ["admin", "user"],
