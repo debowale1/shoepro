@@ -1,8 +1,14 @@
+import asyncHandler from 'express-async-handler'
 import Product from './../models/productModel.js'
 
-const getAllProducts = async (req, res, next) => {
-  try {
+// @desc Fetch all products
+// route GET /api/v1/products
+// access Public
+
+const getAllProducts = asyncHandler(async (req, res, next) => {
+  
     const products = await Product.find();
+    if(!products) return next(res.status(404).json({status: 'fail', message: 'Products Not Found'}));
     res.status(200).json({
       status: 'success',
       length: products.length,
@@ -10,14 +16,31 @@ const getAllProducts = async (req, res, next) => {
         products
       }
     })
-  } catch (error) {
-    next(error)
-  }
-}
+})
 
-const createProduct = async(req, res, next) => {
-  try {
+// @desc Fetch single product
+// route GET /api/v1/products/:id
+// access Public
+
+const getProduct = asyncHandler( async (req, res, next) => {
+  const product = await Product.findById(req.params.id);
+  if(!product) return next(res.status(404).json({status: 'fail', message: 'Product Not Found'}));
+  res.status(200).json({
+    status: 'success',
+    data: {
+      product
+    }
+  })
+})
+
+// @desc Create Product
+// route POST /api/v1/products
+// access Public
+
+const createProduct = asyncHandler(async(req, res, next) => {
+  
     const product = await Product.create(req.body);
+    if(!product) return next(res.status(500).json({status: 'error', message: 'Error creating product'}));
     res.status(200).json({
       status: 'success',
       length: products.length,
@@ -25,9 +48,6 @@ const createProduct = async(req, res, next) => {
         product
       }
     })
-  } catch (error) {
-    next(error)
-  }
-}
+})
 
-export {getAllProducts, createProduct}
+export {getAllProducts, getProduct, createProduct}
