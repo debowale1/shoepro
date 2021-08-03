@@ -24,7 +24,10 @@ const getAllProducts = asyncHandler(async (req, res, next) => {
 
 const getProduct = asyncHandler( async (req, res, next) => {
   const product = await Product.findById(req.params.id);
-  if(!product) return next(res.status(404).json({status: 'fail', message: 'Product Not Found'}));
+  if(!product) {
+    res.status(404)
+    throw new Error('Product Not Found')
+  }
   res.status(200).json({
     status: 'success',
     data: {

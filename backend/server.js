@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import productRouter from './routes/productRoutes.js'
 import userRouter from './routes/userRoutes.js'
+import { errorHandler, notFound } from './middleware/errorMiddleware.js'
+
 
 dotenv.config()
 
@@ -16,6 +18,12 @@ app.use(express.json());
 //Mounting Routes
 app.use('/api/v1/products', productRouter)
 app.use('/api/v1/users', userRouter)
+
+//Not Found middleware
+app.use(notFound)
+
+//Error middleware
+app.use(errorHandler)
 
 
 const PORT = process.env.PORT || 2000
