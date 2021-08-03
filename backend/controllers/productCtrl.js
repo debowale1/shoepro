@@ -6,16 +6,43 @@ import Product from './../models/productModel.js'
 // access Public
 
 const getAllProducts = asyncHandler(async (req, res, next) => {
+
+  const queryObj = {...req.query}
   
-    const products = await Product.find();
-    if(!products) return next(res.status(404).json({status: 'fail', message: 'Products Not Found'}));
-    res.status(200).json({
-      status: 'success',
-      length: products.length,
-      data: {
-        products
-      }
-    })
+  const allowedFields = ['sort', 'fields', 'page', 'limit'];
+  allowedFields.forEach(el => delete queryObj[el]);
+  
+  // console.log(req.query)
+  // console.log(queryObj)
+
+  let query =  Product.find(queryObj);
+
+  //SORT
+  if(req.query.sort){
+    const sortBy = req.query.sort.split(',').join(' ');
+    query.sort(sortBy);
+  }else{
+    query.sort('createdAt');
+  }
+
+  //Fields Limiting
+  if(req.query.fields){
+    const fields = req.query.fields.split(',').join(' ');
+    query.select(fields)
+  }else{
+    query.select('-__v')
+  }
+
+  const products = await query
+
+  if(!products) return next(res.status(404).json({status: 'fail', message: 'Products Not Found'}));
+  res.status(200).json({
+    status: 'success',
+    length: products.length,
+    data: {
+      products
+    }
+  })
 })
 
 // @desc Fetch single product

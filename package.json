@@ -39,6 +39,7 @@
     "validator": "^13.6.0"
   },
   "devDependencies": {
-    "concurrently": "^6.2.0"
+    "concurrently": "^6.2.0",
+    "morgan": "^1.10.0"
   }
 }
