@@ -33,6 +33,14 @@ const getAllProducts = asyncHandler(async (req, res, next) => {
     query.select('-__v')
   }
 
+  //pagination
+  if(req.query.page || req.query.limit){
+    const page = +req.query.page || 1
+    const perPage = +req.query.limit || 100
+    const skip = (page - 1) * perPage
+    query.skip(skip).limit(perPage);
+  }
+
   const products = await query
 
   if(!products) return next(res.status(404).json({status: 'fail', message: 'Products Not Found'}));
