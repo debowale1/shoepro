@@ -23,10 +23,10 @@ if(process.env.NODE_ENV === 'development'){
 app.use('/api/v1/products', productRouter)
 app.use('/api/v1/users', userRouter)
 
-app.use((req, res, next) => {
-  console.log(res);
-  next()
-})
+// app.use((req, res, next) => {
+//   console.log(res);
+//   next()
+// })
 
 //Not Found middleware
 app.use(notFound)

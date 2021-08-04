@@ -79,9 +79,8 @@ const createProduct = asyncHandler(async(req, res, next) => {
   
     const product = await Product.create(req.body);
     if(!product) return next(res.status(500).json({status: 'error', message: 'Error creating product'}));
-    res.status(200).json({
+    res.status(201).json({
       status: 'success',
-      length: products.length,
       data: {
         product
       }

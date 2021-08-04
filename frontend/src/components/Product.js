@@ -9,8 +9,8 @@ const Product = ({product}) => {
     <figure>
       <span className="ribbon off">-30%</span>
       <Link to={`/product/${product._id}`}>
-        <img className="img-fluid lazy" src={product.images[0]} data-src={product.images[0]} alt=""/>
-        <img className="img-fluid lazy" src={product.images[1]} data-src={product.images[1]} alt=""/>
+        <img className="img-fluid lazy" src={product.image} data-src={product.image} alt=""/>
+        <img className="img-fluid lazy" src={product.image} data-src={product.image} alt=""/>
       </Link>
       <div data-countdown="2019/05/15" className="countdown"></div>
     </figure>

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import validator from 'validator'
+import slugify from 'slugify'
 
 const {Schema} = mongoose
 
@@ -13,6 +13,7 @@ const productSchema = Schema({
     type: String,
     required: [true, 'A product must have a name'],
     trim: true,
+    unique: [true, 'A product must be unique']
   },
   slug: String,
   image: {
@@ -52,9 +53,14 @@ const productSchema = Schema({
     default: 0,
   },
 },{
-  timeStamps: true,
+  timestamps: true,
   toJSON: {virtuals: true},
   toObject: {virtuals: true},
+})
+
+productSchema.pre('save', function(next){
+  this.slug = slugify(this.name, {lower: true})
+  next()
 })
 
 const Product = new mongoose.model('Product', productSchema)
