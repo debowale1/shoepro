@@ -1,127 +1,152 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {listProductDetails} from './../actions/productActions'
 import Rating from '../components/Rating'
-import axios from 'axios'
+import Loader from '../components/Loader'
 
-const ProductScreen = ({match}) => {
-	const [product, setProduct] = useState({})
+const ProductScreen = ({history, match}) => {
+	const [qty, setQty] = useState(0)
+
+	const dispatch = useDispatch()
+	const productDetails = useSelector(state => state.productDetails)
+	const { loading, error, product} = productDetails
+
 	useEffect(() => {
-		const fetchProduct = async () => {
-			const res = await axios.get(`/api/v1/products/${match.params.id}`)
-			const {data} = await res.data
-			setProduct(data.product)
-		}
-		fetchProduct()
-	}, [match])
-  // const product = products.find(p => p._id === match.params.id)
+		dispatch(listProductDetails(match.params.id))
+	}, [dispatch, match])
+
+	const addToCartHandler = () => {
+		history.push(`/cart/${match.params.id}?qty=${qty}`)
+	}
+
   return (
     <>
       <div className="container margin_30">
-	        <div className="countdown_inner">-20% This offer ends in <div data-countdown="2019/05/15" className="countdown"></div>
+	        <div className="countdown_inner">-20% This offer ends in 
+						<div data-countdown="2019/05/15" className="countdown"></div>
 	        </div>
-	        <div className="row">
-	            <div className="col-md-6">
-	                <div className="all">
-	                    <div className="slider">
-	                        <div className="owl-carousel owl-theme main">
-	                            <div style={{backgroundImage: `url(/images/1.jpg)`}} className="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/2.jpg)`}} className="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/3.jpg)`}} className="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/4.jpg)`}} className="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/5.jpg)`}} className="item-box"></div>
-	                            <div style={{backgroundImage: `url(/images/6.jpg)`}} className="item-box"></div>
-	                        </div>
-	                        <div className="left nonl"><i className="ti-angle-left"></i></div>
-	                        <div className="right"><i className="ti-angle-right"></i></div>
-	                    </div>
-	                    <div className="slider-two">
-	                        <div className="owl-carousel owl-theme thumbs">
-	                            <div style={{backgroundImage: `url(images/1.jpg)`}} className="item active"></div>
-	                            <div style={{backgroundImage: `url(/images/1.jpg)`}} className="item"></div>
-	                            <div style={{backgroundImage: `url(/images/2.jpg)`}} className="item"></div>
-	                            <div style={{backgroundImage: `url(/images/3.jpg)`}} className="item"></div>
-	                            <div style={{backgroundImage: `url(/images/4.jpg)`}} className="item"></div>
-	                            <div style={{backgroundImage: `url(/images/5.jpg)`}} className="item"></div>
-	                        </div>
-	                        <div className="left-t nonl-t"></div>
-	                        <div className="right-t"></div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div className="col-md-6">
-	                <div className="breadcrumbs">
-	                    <ul>
-	                        <li><a href="#">Home</a></li>
-	                        <li><a href="#">Category</a></li>
-	                        <li>Page active</li>
-	                    </ul>
-	                </div>
-	                {/* <!-- /page_header --> */}
-	                <div className="prod_info">
-	                    <h1>{product.name}</h1>
-                      <Rating rating={product.rating} numReviews={product.numReviews} />
-	                    <p>
-                        <small>SKU: MTKRY-001</small><br/>{product.description}
-                      </p>
-	                    <div className="prod_options">
-	                        <div className="row">
-	                            <label className="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
-	                            <div className="col-xl-4 col-lg-5 col-md-6 col-6 colors">
-	                                <ul>
-	                                    <li><a href="#" className="color color_1 active"></a></li>
-	                                    <li><a href="#0" className="color color_2"></a></li>
-	                                    <li><a href="#0" className="color color_3"></a></li>
-	                                    <li><a href="#0" className="color color_4"></a></li>
-	                                </ul>
-	                            </div>
-	                        </div>
-	                        <div className="row">
-	                            <label className="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Size</strong> - Size Guide <a href="#0" data-toggle="modal" data-target="#size-modal"><i className="ti-help-alt"></i></a></label>
-	                            <div className="col-xl-4 col-lg-5 col-md-6 col-6">
-	                                <div className="custom-select-form">
-	                                    <select className="nice-select wide">
-	                                        <option value="" defaultValue>Small (S)</option>
-	                                        <option value="">M</option>
-	                                        <option value=" ">L</option>
-	                                        <option value=" ">XL</option>
-	                                    </select>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div className="row">
-	                            <label className="col-xl-5 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
-	                            <div className="col-xl-4 col-lg-5 col-md-6 col-6">
-	                                <div className="numbers-row">
-	                                    <input type="text" value="1" id="quantity_1" className="qty2" name="quantity_1"/>
-                                      <div className="inc button_inc">+</div>
-                                      <div className="dec button_inc">-</div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div className="row">
-	                        <div className="col-lg-5 col-md-6">
-	                            <div className="price_main"><span className="new_price">${product.price }</span><span className="percentage">-20%</span> <span className="old_price">$160.00</span></div>
-	                        </div>
-	                        <div className="col-lg-4 col-md-6">
-	                            <div className="btn_add_to_cart"><a href="#0" className="btn_1">Add to Cart</a></div>
-	                        </div>
-	                    </div>
-	                </div>
-	                {/* <!-- /prod_info --> */}
-	                <div className="product_actions">
-	                    <ul>
-	                        <li>
-	                            <a href="#"><i className="ti-heart"></i><span>Add to Wishlist</span></a>
-	                        </li>
-	                        <li>
-	                            <a href="#"><i className="ti-control-shuffle"></i><span>Add to Compare</span></a>
-	                        </li>
-	                    </ul>
-	                </div>
-	                {/* <!-- /product_actions --> */}
-	            </div>
-	        </div>
-	        {/* <!-- /row --> */}
+	         { 
+						loading ? <Loader /> : 
+						error ? <h3>{error}</h3> : 
+						<div className="row">
+								<div className="col-md-6">
+										<div className="all">
+												<div className="slider">
+														<div className="owl-carousel owl-theme main">
+																<div style={{backgroundImage: `url(/images/${product.image}.jpg)`}} className="item-box"></div>
+																<div style={{backgroundImage: `url(/images/2.jpg)`}} className="item-box"></div>
+																<div style={{backgroundImage: `url(/images/3.jpg)`}} className="item-box"></div>
+														</div>
+														<div className="left nonl"><i className="ti-angle-left"></i></div>
+														<div className="right"><i className="ti-angle-right"></i></div>
+												</div>
+												<div className="slider-two">
+														<div className="owl-carousel owl-theme thumbs">
+																<div style={{backgroundImage: `url(images/1.jpg)`}} className="item active"></div>
+																<div style={{backgroundImage: `url(/images/1.jpg)`}} className="item"></div>
+																<div style={{backgroundImage: `url(/images/2.jpg)`}} className="item"></div>
+																<div style={{backgroundImage: `url(/images/3.jpg)`}} className="item"></div>
+														</div>
+														<div className="left-t nonl-t"></div>
+														<div className="right-t"></div>
+												</div>
+										</div>
+								</div>
+								<div className="col-md-6">
+										<div className="breadcrumbs">
+												<ul>
+														<li><a href="#">Home</a></li>
+														<li><a href="#">Category</a></li>
+														<li>Page active</li>
+												</ul>
+										</div>
+										{/* <!-- /page_header --> */}
+										<div className="prod_info">
+												<h1>{product.name}</h1>
+												<Rating rating={product.rating} numReviews={product.numReviews} />
+												<p>
+													<small>SKU: MTKRY-001</small><br/>{product.description}
+												</p>
+												<div className="prod_options">
+														<div className="row">
+																<label className="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
+																<div className="col-xl-4 col-lg-5 col-md-6 col-6 colors">
+																		<ul>
+																				<li><a href="#" className="color color_1 active"></a></li>
+																				<li><a href="#0" className="color color_2"></a></li>
+																				<li><a href="#0" className="color color_3"></a></li>
+																				<li><a href="#0" className="color color_4"></a></li>
+																		</ul>
+																</div>
+														</div>
+														<div className="row">
+																<label className="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Size</strong> - Size Guide <a href="#0" data-toggle="modal" data-target="#size-modal"><i className="ti-help-alt"></i></a></label>
+																<div className="col-xl-4 col-lg-5 col-md-6 col-6">
+																		<div className="custom-select-form">
+																				<select className="nice-select wide">
+																						<option value="" defaultValue>Small (S)</option>
+																						<option value="">M</option>
+																						<option value=" ">L</option>
+																						<option value=" ">XL</option>
+																				</select>
+																		</div>
+																</div>
+														</div>
+														{product.countInStock > 0 && <div className="row">
+																<label className="col-xl-5 col-lg-5 col-md-6 col-6">
+																	<strong>Quantity</strong>
+																</label>
+																<div className="col-xl-4 col-lg-5 col-md-6 col-6">
+																		<div className="custom-select-form">
+																				<select className="nice-select wide" value= {qty} onChange={(e) => setQty(e.target.value)}>
+																						{[...Array(product.countInStock).keys()].map(x => (
+																							<option key={ x + 1} value={x+1} >{x + 1}</option>
+
+																						))}
+																				</select>
+																		</div>
+																</div>
+														</div>}
+														{/* <div className="row">
+																<label className="col-xl-5 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
+																<div className="col-xl-4 col-lg-5 col-md-6 col-6">
+																		<div className="numbers-row">
+																				<input type="text" value={qty} id="quantity_1" className="qty2" name="quantity_1"/>
+																				<div className="inc button_inc">+</div>
+																				<div className="dec button_inc">-</div>
+																		</div>
+																</div>
+														</div> */}
+												</div>
+												<div className="row">
+														<div className="col-lg-5 col-md-6">
+																<div className="price_main"><span className="new_price">${product.price }</span><span className="percentage">-20%</span> <span className="old_price">$160.00</span></div>
+														</div>
+														<div className="col-lg-4 col-md-6">
+																<div className="btn_add_to_cart">
+																	<button className="btn_1" onClick={addToCartHandler}>Add to Cart</button>
+																</div>
+														</div>
+												</div>
+										</div>
+										
+										
+										{/* <!-- /prod_info --> */} 
+										
+										<div className="product_actions">
+												<ul>
+														<li>
+																<a href="#"><i className="ti-heart"></i><span>Add to Wishlist</span></a>
+														</li>
+														<li>
+																<a href="#"><i className="ti-control-shuffle"></i><span>Add to Compare</span></a>
+														</li>
+												</ul>
+										</div>
+										{/* <!-- /product_actions --> */}
+								</div>
+						</div>
+					}
 	    </div>
 	    {/* <!-- /container --> */}
 	    

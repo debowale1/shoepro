@@ -1,20 +1,20 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Product from './../components/Product'
-import axios from 'axios'
-// import products from './../products'
+import {listProducts} from './../actions/productActions'
+import Loader from '../components/Loader'
+import '../index.css'
+
+
 
 const HomeScreen = () => {
-	const [products, setProducts] = useState([])
-
+	const dispatch = useDispatch()
+	const productList = useSelector(state => state.productList)
+	const { loading, error, products} = productList
+	
 	useEffect(() => {
-		const fetchProducts = async ()  => {
-			const res = await axios.get('/api/v1/products');
-			const {data} = await res.data
-			setProducts(data.products)
-		}
-		fetchProducts()
-	}, [])
-
+		dispatch(listProducts())	
+	}, [dispatch])
 
 
   return (
@@ -114,13 +114,14 @@ const HomeScreen = () => {
 				<span>Products</span>
 				<p>Cum doctus civibus efficiantur in imperdiet deterruisset</p>
 			</div>
-			<div className="row small-gutters">
+			{loading ? (<Loader />) : error ? (<h2>{error}</h2>) : <div className="row small-gutters">
 					{products.map(product => (
            <Product key={product._id} product={product} />
           ))}
 					{/* <!-- /grid_item --> */}
 				{/* <!-- /col --> */}				
-			</div>
+			</div>	}
+			
 			{/* <!-- /row --> */}
 		</div>
     </>
