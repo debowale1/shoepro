@@ -4856,7 +4856,7 @@ body.modal-open .mm-slideout {
   left: -15px;
   top: -6px;
   content: '';
-  background: url(../img/countdown_bg.svg) top left no-repeat;
+  /*background: url(../img/countdown_bg.svg) top left no-repeat;*/
   width: 27px;
   height: 30px;
   display: inline-block;

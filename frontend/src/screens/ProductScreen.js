@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {listProductDetails} from './../actions/productActions'
 import Rating from '../components/Rating'
@@ -55,8 +56,8 @@ const ProductScreen = ({history, match}) => {
 								<div className="col-md-6">
 										<div className="breadcrumbs">
 												<ul>
-														<li><a href="#">Home</a></li>
-														<li><a href="#">Category</a></li>
+														<li><Link to="#">Home</Link></li>
+														<li><Link to="#">Category</Link></li>
 														<li>Page active</li>
 												</ul>
 										</div>
@@ -68,17 +69,6 @@ const ProductScreen = ({history, match}) => {
 													<small>SKU: MTKRY-001</small><br/>{product.description}
 												</p>
 												<div className="prod_options">
-														<div className="row">
-																<label className="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
-																<div className="col-xl-4 col-lg-5 col-md-6 col-6 colors">
-																		<ul>
-																				<li><a href="#" className="color color_1 active"></a></li>
-																				<li><a href="#0" className="color color_2"></a></li>
-																				<li><a href="#0" className="color color_3"></a></li>
-																				<li><a href="#0" className="color color_4"></a></li>
-																		</ul>
-																</div>
-														</div>
 														<div className="row">
 																<label className="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Size</strong> - Size Guide <a href="#0" data-toggle="modal" data-target="#size-modal"><i className="ti-help-alt"></i></a></label>
 																<div className="col-xl-4 col-lg-5 col-md-6 col-6">
@@ -136,10 +126,10 @@ const ProductScreen = ({history, match}) => {
 										<div className="product_actions">
 												<ul>
 														<li>
-																<a href="#"><i className="ti-heart"></i><span>Add to Wishlist</span></a>
+																<a href="/wish"><i className="ti-heart"></i><span>Add to Wishlist</span></a>
 														</li>
 														<li>
-																<a href="#"><i className="ti-control-shuffle"></i><span>Add to Compare</span></a>
+																<a href="/compare"><i className="ti-control-shuffle"></i><span>Add to Compare</span></a>
 														</li>
 												</ul>
 										</div>
