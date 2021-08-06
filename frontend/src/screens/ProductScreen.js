@@ -20,6 +20,7 @@ const ProductScreen = ({history, match}) => {
 		history.push(`/cart/${match.params.id}?qty=${qty}`)
 	}
 
+
   return (
     <>
       <div className="container margin_30">

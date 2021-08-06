@@ -2,12 +2,12 @@ import React, {useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import Loader from '../components/Loader'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 
 const CartScreen = ({match, location, history}) => {
   const productId = match.params.id
-  const qty = location.search ? +location.search.split('=')[1] : 1
+  const qty = location.search ? Number(location.search.split('=')[1]) : 1
 
   const dispatch = useDispatch()
 
@@ -21,15 +21,11 @@ const CartScreen = ({match, location, history}) => {
   }, [dispatch, productId, qty])
 
   const removeFromCartHandler = (productId) => {
-    console.log('removed');
+    dispatch(removeFromCart(productId))
   }
   const checkoutHandler = () => {
     history.push('/login?redirect=shipping')
   }
-
-
-
-
 
   return (
     <>
@@ -84,10 +80,9 @@ const CartScreen = ({match, location, history}) => {
                   <input type="text" value={item.qty} id="quantity_1" className="qty2" name="quantity_1" />
                 <div className="inc button_inc">+</div><div className="dec button_inc">-</div></div> */}
                 <div className="custom-select-form">
-                    <select className="nice-select wide" value= {item.qty} onChange={(e) => dispatch(addToCart(item.product, +e.target.value))}>
+                    <select className="nice-select wide" value={item.qty} onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}>
                         {[...Array(item.countInStock).keys()].map(x => (
                           <option key={ x + 1} value={x+1} >{x + 1}</option>
-
                         ))}
                     </select>
                 </div>
@@ -132,7 +127,7 @@ const CartScreen = ({match, location, history}) => {
 					<span>Shipping</span> $7.00
 				</li>
 				<li>
-					<span>Total</span> ${cartItems.reduce((acc, cur) => acc + cur.qty * cur.price, 0)}
+					<span>Total</span> ${cartItems.reduce((acc, cur) => acc + cur.qty * cur.price, 0).toFixed(2)}
 				</li>
 			</ul>
 			<button className="btn_1 full-width cart" disabled={cartItems.length === 0} onClick={checkoutHandler}>Proceed to Checkout</button>
