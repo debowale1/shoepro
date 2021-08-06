@@ -22,16 +22,16 @@ const userSchema = Schema({
     type: String,
     required: [true, 'User must provide a password'],
   },
-  // passwordConfirm: {
-  //   type: String,
-  //   required: [true, "Please confirm your password"],
-  //   validate: {
-  //     validator: function(el){
-  //       return el === this.password
-  //     },
-  //     message: "Passwords dont match"
-  //   }
-  // },
+  passwordConfirm: {
+    type: String,
+    required: [true, "Please confirm your password"],
+    validate: {
+      validator: function(el){
+        return el === this.password
+      },
+      message: "Passwords dont match"
+    }
+  },
   role: {
     type: String,
     enum: ["admin", "user"],
@@ -51,7 +51,7 @@ const userSchema = Schema({
 })
 
 
-//
+//encrypt password before save
 userSchema.pre('save', async function(next){
   if(!this.isModified('password')) return next()
 
@@ -59,6 +59,11 @@ userSchema.pre('save', async function(next){
   this.passwordConfirm = undefined
   next()
 })
+
+//compare encrypted password and provided password on log in request
+userSchema.methods.comparePassword = async function(providedPassword, hashedPassword) {
+  return await bcrypt.compare(providedPassword, hashedPassword)
+}
 
 const User = new mongoose.model('User', userSchema)
 export default User;
