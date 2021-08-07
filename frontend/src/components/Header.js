@@ -17,20 +17,20 @@ const Header = () => {
 						</div>
 					</div>
 					<nav className="col-xl-6 col-lg-7">
-						<a className="open_close" href="javascript:void(0);">
+						<Link className="open_close" to="">
 							<div className="hamburger hamburger--spin">
 								<div className="hamburger-box">
 									<div className="hamburger-inner"></div>
 								</div>
 							</div>
-						</a>
+						</Link>
 						 {/* Mobile menu button  */}
 						<div className="main-menu">
 							<div id="header_menu">
 								<a href="index.html">
                   <img src="img/logo_black.svg" alt="" width="100" height="35" />
                 </a>
-								<a href="#" className="open_close" id="close_in"><i className="ti-close"></i></a>
+								<Link to="#" className="open_close" id="close_in"><i className="ti-close"></i></Link>
 							</div>
 							<ul>
 								<li>
@@ -44,6 +44,9 @@ const Header = () => {
 								</li>
 								<li>
 									<Link to="/checkout">Checkout</Link>
+								</li>
+								<li>
+									<Link to="/login">Login</Link>
 								</li>
 							</ul>
 						</div>
@@ -65,14 +68,14 @@ const Header = () => {
 						<nav className="categories">
 							<ul className="clearfix">
 								<li><span>
-										<a href="#">
+										<Link to="#">
 											<span className="hamburger hamburger--spin">
 												<span className="hamburger-box">
 													<span className="hamburger-inner"></span>
 												</span>
 											</span>
 											Categories
-										</a>
+										</Link>
 									</span>
 									<div id="menu">
 										<ul>
@@ -85,7 +88,7 @@ const Header = () => {
 													<li><a href="listing-grid-5-sidebar-right.html">View all Collections</a></li>
 												</ul>
 											</li>
-											<li><span><a href="#">Men</a></span>
+											<li><span><Link href="#">Men</Link></span>
 												<ul>
 													<li><a href="listing-grid-6-sidebar-left.html">Offers</a></li>
 													<li><a href="listing-grid-7-sidebar-right.html">Shoes</a></li>
@@ -94,7 +97,7 @@ const Header = () => {
 													<li><a href="listing-row-4-sidebar-extended.html">Equipment</a></li>
 												</ul>
 											</li>
-											<li><span><a href="#">Women</a></span>
+											<li><span><Link href="#">Women</Link></span>
 												<ul>
 													<li><a href="listing-grid-1-full.html">Best Sellers</a></li>
 													<li><a href="listing-grid-2-full.html">Clothing</a></li>
@@ -102,7 +105,7 @@ const Header = () => {
 													<li><a href="listing-grid-4-sidebar-left.html">Shoes</a></li>
 												</ul>
 											</li>
-											<li><span><a href="#">Boys</a></span>
+											<li><span><Link href="#">Boys</Link></span>
 												<ul>
 													<li><a href="listing-grid-6-sidebar-left.html">Easy On Shoes</a></li>
 													<li><a href="listing-grid-7-sidebar-right.html">Clothing</a></li>
@@ -110,7 +113,7 @@ const Header = () => {
 													<li><a href="listing-row-4-sidebar-extended.html">All Boys</a></li>
 												</ul>
 											</li>
-											<li><span><a href="#">Girls</a></span>
+											<li><span><Link href="#">Girls</Link></span>
 												<ul>
 													<li><a href="listing-grid-1-full.html">New Releases</a></li>
 													<li><a href="listing-grid-2-full.html">Clothing</a></li>
@@ -118,7 +121,7 @@ const Header = () => {
 													<li><a href="listing-grid-4-sidebar-left.html">Best Sellers</a></li>
 												</ul>
 											</li>
-											<li><span><a href="#">Customize</a></span>
+											<li><span><Link href="#">Customize</Link></span>
 												<ul>
 													<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
 													<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
@@ -195,7 +198,7 @@ const Header = () => {
 								{/* <!-- /dropdown-access--> */}
 							</li>
 							<li>
-								<a href="javascript:void(0);" className="btn_search_mob"><span>Search</span></a>
+								<Link to="" className="btn_search_mob"><span>Search</span></Link>
 							</li>
 							<li>
 								<a href="#menu" className="btn_cat_mob">
