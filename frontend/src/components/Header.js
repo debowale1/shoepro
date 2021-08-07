@@ -1,8 +1,16 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {useDispatch, useSelector } from 'react-redux'
 import logo from './../logo.svg'
 
 const Header = () => {
+	const dispatch = useDispatch()
+
+	const userLogin = useSelector(state => state.userLogin)
+	
+	const { userInfo } = userLogin
+
+	const logoutHandler = () => {}
   return (
     <header className="version_1">
 		<div className="layer"></div>
@@ -45,9 +53,21 @@ const Header = () => {
 								<li>
 									<Link to="/checkout">Checkout</Link>
 								</li>
-								<li>
-									<Link to="/login">Login</Link>
+								{ userInfo ? (
+									<li className="submenu">
+									<Link to="#" className="show-submenu">{userInfo.name}</Link>
+										<ul>
+											<li><Link href="/profile">Profile</Link></li>
+											<li onClick={logoutHandler}>Logout</li>
+										</ul>
 								</li>
+									) : (
+									<li>
+										<Link to="/login">Login</Link>
+									</li>
+									)
+								}
+								
 							</ul>
 						</div>
 						{/* <!--/main-menu --> */}
