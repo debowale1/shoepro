@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {useDispatch, useSelector } from 'react-redux'
 import logo from './../logo.svg'
+import { logout } from '../actions/userActions'
 
 const Header = () => {
 	const dispatch = useDispatch()
@@ -10,7 +11,9 @@ const Header = () => {
 	
 	const { userInfo } = userLogin
 
-	const logoutHandler = () => {}
+	const logoutHandler = () => {
+		dispatch(logout())
+	}
   return (
     <header className="version_1">
 		<div className="layer"></div>
