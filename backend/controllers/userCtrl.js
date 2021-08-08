@@ -112,27 +112,48 @@ const getUserProfile = asyncHandler(async (req, res, next) => {
 const updateUserProfile = asyncHandler(async (req, res, next) => {
 
   const user = await User.findById(req.user._id)
-  if(user) {
-    user.name = req.body.name || user.name
-    user.email = req.body.email || user.email
-    if(req.body.password && req.body.passwordConfirm){
-      user.password = req.body.password
-      // user.passwordConfirm = req.body.passwordConfirm
-    }
-    const updatedUser = await user.save()
-    // await user.save();
-  
-    res.status(200).json({
-      status: 'success', 
-      data: {
-        updatedUser,
-        token: generateToken(updatedUser._id)
-      }
-    })
-  }else {
+  if(!user) {
     res.status(404)
-    throw new Error('User not found')
+    throw new Error('User not found!')
   }
+  const updates = {
+    
+  }
+  const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, {
+    new: true,
+    runValidators: true
+  })
+
+  res.status(200).json({
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      role: updatedUser.role,
+      token: generateToken(updatedUser._id)
+  })
+
+  // if(user) {
+
+  //   user.name = req.body.name || user.name
+  //   user.email = req.body.email || user.email
+
+  //   if(req.body.password && req.body.passwordConfirm){
+  //     user.password = req.body.password
+  //     // user.passwordConfirm = req.body.passwordConfirm
+  //   }
+  //   const updatedUser = await user.save()
+  
+  //   res.status(200).json({
+  //     status: 'success', 
+  //     data: {
+  //       updatedUser,
+  //       token: generateToken(updatedUser._id)
+  //     }
+  //   })
+  // }else {
+  //   res.status(404)
+  //   throw new Error('User not found')
+  // }
 })
 
 export {getAllUsers, registerUser, authUser, getUserProfile, updateUserProfile }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import { getUserDetails } from '../actions/userActions'
+import { getUserDetails, updateUserProfile } from '../actions/userActions'
 
 const ProfileScreen = ({history}) => {
 
@@ -20,6 +20,9 @@ const ProfileScreen = ({history}) => {
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
+  const userUpdateProfile = useSelector(state => state.userUpdateProfile)
+  const { success } = userUpdateProfile
+
   // let redirect = location.search ? location.search.split('=')[1] : '/'
   // redirect = ''
 
@@ -27,7 +30,6 @@ const ProfileScreen = ({history}) => {
     if(!userInfo){
       history.push('/login')
     }else{
-      console.log(user)
       if(!user.name){
         dispatch(getUserDetails('profile'))
       }else{
@@ -42,7 +44,7 @@ const ProfileScreen = ({history}) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    // dispatch(register(name, email, password, passwordConfirm))
+    dispatch(updateUserProfile({id: user._id, name, email}))
   }
   return (
     <main className="bg_gray">
@@ -61,6 +63,7 @@ const ProfileScreen = ({history}) => {
         <div className="col-xl-6 col-lg-6 col-md-8">
           <h5>User Profile</h5>
           {error && <h6 style={{ color: 'red'}}>{error}</h6> }
+          {success && <h6 style={{ color: 'green'}}>Updated Successfully</h6> }
           {loading && <Loader/> }
           <div className="box_account">
             {/* <h3 className="client">Already Client</h3> */}
