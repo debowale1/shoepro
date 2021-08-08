@@ -38,9 +38,9 @@ const Header = () => {
 						 {/* Mobile menu button  */}
 						<div className="main-menu">
 							<div id="header_menu">
-								<a href="index.html">
-                  <img src="img/logo_black.svg" alt="" width="100" height="35" />
-                </a>
+								<Link to="index.html">
+                  <img src="/images/logo_black.svg" alt="" width="100" height="35" />
+                </Link>
 								<Link to="#" className="open_close" id="close_in"><i className="ti-close"></i></Link>
 							</div>
 							<ul>
@@ -60,7 +60,7 @@ const Header = () => {
 									<li className="submenu">
 									<Link to="#" className="show-submenu">{userInfo.name}</Link>
 										<ul>
-											<li><Link href="/profile">Profile</Link></li>
+											<li><Link to="/profile">Profile</Link></li>
 											<li onClick={logoutHandler}>Logout</li>
 										</ul>
 								</li>
@@ -111,7 +111,7 @@ const Header = () => {
 													<li><a href="listing-grid-5-sidebar-right.html">View all Collections</a></li>
 												</ul>
 											</li>
-											<li><span><Link href="#">Men</Link></span>
+											<li><span><Link to="#">Men</Link></span>
 												<ul>
 													<li><a href="listing-grid-6-sidebar-left.html">Offers</a></li>
 													<li><a href="listing-grid-7-sidebar-right.html">Shoes</a></li>
@@ -120,7 +120,7 @@ const Header = () => {
 													<li><a href="listing-row-4-sidebar-extended.html">Equipment</a></li>
 												</ul>
 											</li>
-											<li><span><Link href="#">Women</Link></span>
+											<li><span><Link to="#">Women</Link></span>
 												<ul>
 													<li><a href="listing-grid-1-full.html">Best Sellers</a></li>
 													<li><a href="listing-grid-2-full.html">Clothing</a></li>
@@ -128,7 +128,7 @@ const Header = () => {
 													<li><a href="listing-grid-4-sidebar-left.html">Shoes</a></li>
 												</ul>
 											</li>
-											<li><span><Link href="#">Boys</Link></span>
+											<li><span><Link to="#">Boys</Link></span>
 												<ul>
 													<li><a href="listing-grid-6-sidebar-left.html">Easy On Shoes</a></li>
 													<li><a href="listing-grid-7-sidebar-right.html">Clothing</a></li>
@@ -136,7 +136,7 @@ const Header = () => {
 													<li><a href="listing-row-4-sidebar-extended.html">All Boys</a></li>
 												</ul>
 											</li>
-											<li><span><Link href="#">Girls</Link></span>
+											<li><span><Link to="#">Girls</Link></span>
 												<ul>
 													<li><a href="listing-grid-1-full.html">New Releases</a></li>
 													<li><a href="listing-grid-2-full.html">Clothing</a></li>
@@ -144,7 +144,7 @@ const Header = () => {
 													<li><a href="listing-grid-4-sidebar-left.html">Best Sellers</a></li>
 												</ul>
 											</li>
-											<li><span><Link href="#">Customize</Link></span>
+											<li><span><Link to="#">Customize</Link></span>
 												<ul>
 													<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
 													<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
@@ -173,14 +173,14 @@ const Header = () => {
 										<ul>
 											<li>
 												<a href="product-detail-1.html">
-													<figure><img src="img/products/product_placeholder_square_small.jpg" data-src="img/products/shoes/thumb/1.jpg" alt="" width="50" height="50" className="lazy" /></figure>
+													<figure><img src="/images/1.jpg" data-src="/images/1.jpg" alt="" width="50" height="50" className="lazy" /></figure>
 													<strong><span>1x Armor Air x Fear</span>$90.00</strong>
 												</a>
 												<a href="#0" className="action"><i className="ti-trash"></i></a>
 											</li>
 											<li>
 												<a href="product-detail-1.html">
-													<figure><img src="img/products/product_placeholder_square_small.jpg" data-src="img/products/shoes/thumb/2.jpg" alt="" width="50" height="50" className="lazy" /></figure>
+													<figure><img src="/images/1.jpg" data-src="/images/1.jpg" alt="" width="50" height="50" className="lazy" /></figure>
 													<strong><span>1x Armor Okwahn II</span>$110.00</strong>
 												</a>
 												<a href="0" className="action"><i className="ti-trash"></i></a>

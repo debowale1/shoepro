@@ -88,12 +88,21 @@ const authUser = asyncHandler(async (req, res, next) => {
 const getUserProfile = asyncHandler(async (req, res, next) => {
 
   const user = await User.findById(req.user._id).select('-password')
+
   if(!user) return next(res.status(404).json({status: 'fail', message: 'User not found'}))
+  const token = generateToken(user._id)
   res.status(200).json({
-    status: 'success', 
-    data: {
-      user
-    }
+    // status: 'success',
+    // data: {
+    //   ...user,
+    //   token
+    // }
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    isAdmin: user.isAdmin,
+    token
   })
 })
 
