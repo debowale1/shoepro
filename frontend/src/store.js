@@ -5,6 +5,13 @@ import { productDetailsReducer, productListReducer } from './reducers/productRed
 import { cartReducer } from './reducers/cartReducers'
 import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer } from './reducers/userReducers'
 
+
+const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
+
+const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
+
+const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : {}
+
 //combine our reducers
 const reducers = combineReducers({
   productList: productListReducer,
@@ -16,13 +23,10 @@ const reducers = combineReducers({
   userUpdateProfile: userUpdateProfileReducer
 })
 
-const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
-
-const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
 
 //all initial states go here
 const initialState = {
-  cart: {cartItems: cartItemsFromStorage},
+  cart: {cartItems: cartItemsFromStorage, shippingAddress: shippingAddressFromStorage},
   userLogin: { userInfo: userInfoFromStorage}
 }
 
