@@ -1,17 +1,26 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { saveShippingAddress } from '../actions/cartActions'
 
-const ShippingScreen = () => {
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [postalCode, setPostalCode] = useState('')
-  const [country, setCountry] = useState('')
+const ShippingScreen = ({history}) => {
+
+  const cart = useSelector(state => state.cart)
+  const {shippingAddress} = cart
+
+  const [address, setAddress] = useState(shippingAddress.address)
+  const [city, setCity] = useState(shippingAddress.city)
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
+  const [country, setCountry] = useState(shippingAddress.country)
   // const [address, setAddress] = useState('')
+
+  const dispatch = useDispatch()
 
   const submitHandler = (e) => {
     e.preventDefault()
     //DISPATCH EVENT
+    dispatch(saveShippingAddress({address, city, postalCode, country}))
+    history.push('/payment')
   }
   return (
     <main class="bg_gray">

@@ -26,8 +26,11 @@ const reducers = combineReducers({
 
 //all initial states go here
 const initialState = {
-  cart: {cartItems: cartItemsFromStorage, shippingAddress: shippingAddressFromStorage},
-  userLogin: { userInfo: userInfoFromStorage}
+  cart: {
+    cartItems: cartItemsFromStorage, 
+    shippingAddress: shippingAddressFromStorage
+  },
+  userLogin: { userInfo: userInfoFromStorage }
 }
 
 const middleware = [thunk]
