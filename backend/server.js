@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import connectDB from './config/db.js'
 import productRouter from './routes/productRoutes.js'
 import userRouter from './routes/userRoutes.js'
+import orderRouter from './routes/orderRoutes.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js'
 
 
@@ -22,6 +23,7 @@ if(process.env.NODE_ENV === 'development'){
 //Mounting Routes
 app.use('/api/v1/products', productRouter)
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/orders', orderRouter)
 
 // app.use((req, res, next) => {
 //   console.log(res);
