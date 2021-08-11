@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveShippingAddress } from '../actions/cartActions'
+import CheckoutSteps from '../components/CheckoutSteps'
 
 const ShippingScreen = ({history}) => {
 
@@ -25,7 +26,7 @@ const ShippingScreen = ({history}) => {
   return (
     <main class="bg_gray">
       <div class="container margin_30">
-        <div class="page_header">
+        {/* <div class="page_header">
           <div class="breadcrumbs">
             <ul>
               <li><Link to="#">Home</Link></li>
@@ -33,7 +34,8 @@ const ShippingScreen = ({history}) => {
               <li>Checkout Information</li>
             </ul>
         </div>
-      </div>
+      </div> */}
+      <CheckoutSteps step1 step2 />
       {/* <!-- /page_header --> */}
       <div class="row justify-content-center">
         <div class="col-xl-6 col-lg-6 col-md-8">
