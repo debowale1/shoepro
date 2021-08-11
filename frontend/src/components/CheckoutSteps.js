@@ -7,16 +7,16 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
 			<div className="breadcrumbs">
 				<ul>
 					<li>
-            { step1 ? <Link to="/login">Sign In</Link> : <Link aria-disabled >Sign In</Link> }
+            { step1 ? <Link to="/login">Sign In</Link> : <Link className="disabled-link" >Sign In</Link> }
           </li>
 					<li>
-            { step2 ? <Link to="/shipping">Shipping</Link> : <Link aria-disabled >Shipping</Link> }
+            { step2 ? <Link to="/shipping">Shipping</Link> : <Link className="disabled-link" >Shipping</Link> }
           </li>
 					<li>
-            { step3 ? <Link to="/payment">Payment</Link> : <Link disabled >Payment</Link> }
+            { step3 ? <Link to="/payment">Payment</Link> : <Link className="disabled-link" >Payment</Link> }
           </li>
 					<li>
-            { step4 ? <Link to="/placeorder">Place Order</Link> : <Link aria-disabled >Place Order</Link> }
+            { step4 ? <Link to="/placeorder">Place Order</Link> : <Link className="disabled-link" >Place Order</Link> }
           </li>
 					{/* <li><Link to="#">Category</Link></li>
 					<li>Page active</li> */}
