@@ -70,6 +70,14 @@ const orderSchema = new mongoose.Schema({
   timestamps: true
 })
 
+orderSchema.pre(/^find/, function(next){
+  this.populate({
+    path: 'user',
+    select: 'name email'
+  })
+  next()
+})
+
 const Order = mongoose.model('Order', orderSchema);
 
 export default Order;
