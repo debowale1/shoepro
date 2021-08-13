@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler';
+import { promisify } from 'util'
 import jwt from 'jsonwebtoken'
 import User from '../models/userModel.js';
 
@@ -10,7 +11,7 @@ const protect = asyncHandler(async (req, res, next) => {
   }
   if(!token) return next(res.status(401).json({status: 'error', message: 'Not authorized. Token not found'}))
 
-  const decoded = jwt.verify(token, process.env.JWT_SECRET)
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
 
   //find the user with the id
   const user = await User.findById(decoded.id).select('-password')

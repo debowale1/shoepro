@@ -12,7 +12,8 @@ const createOrderItem = asyncHandler( async (req, res, next) => {
     paymentMethod, 
     itemsPrice, 
     shippingPrice, 
-    totalPrice
+    totalPrice,
+    taxPrice,
   } = req.body
 
   if(orderItems && orderItems.length === 0){
@@ -28,7 +29,8 @@ const createOrderItem = asyncHandler( async (req, res, next) => {
     shippingAddress, 
     paymentMethod, 
     itemsPrice, 
-    shippingPrice, 
+    shippingPrice,
+    taxPrice, 
     totalPrice
   })
 

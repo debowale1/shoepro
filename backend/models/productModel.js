@@ -59,7 +59,7 @@ const productSchema = Schema({
 })
 
 productSchema.pre('save', function(next){
-  this.slug = slugify(this.name, {lower: true})
+  this.slug = slugify(this.name)
   next()
 })
 

@@ -45,7 +45,7 @@ const PaymentScreen = ({history}) => {
                       <ul>
                         <li>
                           <label class="container_radio">PayPal or Credit Card
-                            <a href="#0" class="info"></a>
+                            <Link to="#0" class="info"></Link>
                             <input 
                               type="radio" 
                               name="paymentMethod" 
@@ -59,7 +59,7 @@ const PaymentScreen = ({history}) => {
                         </li>
                         <li>
                           <label class="container_radio">Stripe
-                            <a href="#0" class="info"></a>
+                            <Link to="#" class="info"></Link>
                             <input 
                               type="radio" 
                               name="paymentMethod" 

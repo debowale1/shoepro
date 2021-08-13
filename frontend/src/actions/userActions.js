@@ -48,7 +48,7 @@ export const register = (name, email, password, passwordConfirm) => async (dispa
     }
 
     const res = axios.post('/api/v1/users', userInput)
-    const {user} = (await res).data.data
+    const {user} = await res.data.data
 
     dispatch({
       type: USER_REGISTER_SUCCESS,
