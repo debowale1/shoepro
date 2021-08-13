@@ -17,7 +17,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     }
   
     // const res = await axios.get('/api/v1/products')
-    const res = await axios.post('api/v1/orders', order, config)
+    const res = await axios.post('/api/v1/orders', order, config)
     const {data} = res
   
     dispatch({
@@ -32,7 +32,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
   }
 }
 
-export const orderDetails = (id) => async (dispatch, getState) => {
+export const getOrderDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ORDER_DETAILS_REQUEST
@@ -41,12 +41,11 @@ export const orderDetails = (id) => async (dispatch, getState) => {
     const {userLogin: { userInfo } } = getState()
     const config = {
       headers: {
-        'Content_Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`
 
       }
     } 
-    const res = await axios.get(`api/v1/orders/${id}`, config)
+    const res = await axios.get(`/api/v1/orders/${id}`, config)
     const {data} = res
 
     dispatch({
