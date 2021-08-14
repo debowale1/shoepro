@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import {useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
+import { listMyOrders } from '../actions/orderActions'
+
 
 const ProfileScreen = ({history}) => {
 
@@ -23,6 +25,9 @@ const ProfileScreen = ({history}) => {
   const userUpdateProfile = useSelector(state => state.userUpdateProfile)
   const { success } = userUpdateProfile
 
+  const orderListMy = useSelector(state => state.orderListMy)
+  const { loading:loadingOrders, orders, error:errorOrders} = orderListMy
+
   // let redirect = location.search ? location.search.split('=')[1] : '/'
   // redirect = ''
 
@@ -32,6 +37,7 @@ const ProfileScreen = ({history}) => {
     }else{
       if(!user.name){
         dispatch(getUserDetails('profile'))
+        dispatch(listMyOrders())
       }else{
         setName(user.name)
         setEmail(user.email)
@@ -125,6 +131,59 @@ const ProfileScreen = ({history}) => {
 
       </div>
       {/* <!-- /row --> */}
+      {loadingOrders ? <Loader /> : errorOrders ? <p>{error}</p> : (
+        <table class="table table-striped cart-list">
+        <thead>
+          <tr>
+            <th>
+              ID
+            </th>
+            <th>
+              DATE
+            </th>
+            <th>
+              TOTAL
+            </th>
+            <th>
+              PAID
+            </th>
+            <th>
+              DELIVERED
+            </th>
+            <th>
+              
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map(order => (
+            <tr key={order._id}>
+              <td>
+                <span class="item_cart">{order._id}</span>
+              </td>
+              <td>
+                <strong>{new Date(order.paidAt).toLocaleString('en-US', { month: 'long', year: 'numeric', day: 'numeric'})}</strong>
+              </td>
+              <td>
+                <div>
+                 ${order.totalPrice}
+                </div>
+              </td>
+              <td>
+                <div>
+                 {order.isPaid ? 'Yes' : 'No'}
+                </div>
+              </td>
+              <td>
+                <strong>{order.isDelivered ? 'Yes' : 'No'}</strong>
+              </td>
+            </tr>
+          ))}
+
+         
+        </tbody>
+      </table>
+      ) }
       </div>
         {/* <!-- /container --> */}
     </main>
