@@ -34,10 +34,10 @@ const RegisterScreen = ({location, history}) => {
     dispatch(register(name, email, password, passwordConfirm))
   }
   return (
-    <main class="bg_gray">
-      <div class="container margin_30">
-        <div class="page_header">
-          <div class="breadcrumbs">
+    <main className="bg_gray">
+      <div className="container margin_30">
+        <div className="page_header">
+          <div className="breadcrumbs">
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="#">User</Link></li>
@@ -46,28 +46,28 @@ const RegisterScreen = ({location, history}) => {
         </div>
       </div>
       {/* <!-- /page_header --> */}
-      <div class="row justify-content-center">
-        <div class="col-xl-6 col-lg-6 col-md-8">
+      <div className="row justify-content-center">
+        <div className="col-xl-6 col-lg-6 col-md-8">
           <h5>Sign Up</h5>
           {error && <h6 style={{ color: 'red'}}>{error}</h6> }
           {loading && <Loader/> }
-          <div class="box_account">
-            <h3 class="client">Already Client</h3>
-            <div class="form_container">
-              <div class="row no-gutters">
-                <div class="col-lg-6 pr-lg-1">
-                  <a href="#0" class="social_bt facebook">Sign up with Facebook</a>
+          <div className="box_account">
+            <h3 className="client">Already Client</h3>
+            <div className="form_container">
+              <div className="row no-gutters">
+                <div className="col-lg-6 pr-lg-1">
+                  <a href="#0" className="social_bt facebook">Sign up with Facebook</a>
                 </div>
-                <div class="col-lg-6 pl-lg-1">
-                  <a href="#0" class="social_bt google">Sign up with Google</a>
+                <div className="col-lg-6 pl-lg-1">
+                  <a href="#0" className="social_bt google">Sign up with Google</a>
                 </div>
               </div>
-              <div class="divider"><span>Or</span></div>
+              <div className="divider"><span>Or</span></div>
               <form onSubmit={submitHandler}>
-                <div class="form-group">
+                <div className="form-group">
                   <input 
                     type="text" 
-                    class="form-control" 
+                    className="form-control" 
                     name="name" 
                     id="name" 
                     value={name}
@@ -75,10 +75,10 @@ const RegisterScreen = ({location, history}) => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input 
                     type="email" 
-                    class="form-control" 
+                    className="form-control" 
                     name="email" 
                     id="email" 
                     value={email}
@@ -86,10 +86,10 @@ const RegisterScreen = ({location, history}) => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input 
                     type="password" 
-                    class="form-control" 
+                    className="form-control" 
                     name="password_in" 
                     id="password_in" 
                     value={password} 
@@ -97,10 +97,10 @@ const RegisterScreen = ({location, history}) => {
                     onChange={(e) => setPassword(e.target.value)}
                  />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input 
                     type="password" 
-                    class="form-control" 
+                    className="form-control" 
                     name="passwordConfirm" 
                     id="passwordConfirm" 
                     value={passwordConfirm} 
@@ -108,19 +108,19 @@ const RegisterScreen = ({location, history}) => {
                     onChange={(e) => setPasswordConfirm(e.target.value)}
                  />
                 </div>
-                <div class="clearfix add_bottom_15">
-                  <div class="checkboxes float-left">
-                    <label class="container_check">Remember me
+                <div className="clearfix add_bottom_15">
+                  <div className="checkboxes float-left">
+                    <label className="container_check">Remember me
                       <input type="checkbox" />
-                      <span class="checkmark"></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div class="float-right">
+                  <div className="float-right">
                     <Link to="/passwordReset" id="forgot">Lost Password?</Link>
                   </div>
                 </div>
-                <div class="text-center">
-                  <input type="submit" value="Sign Up" class="btn_1 full-width" />
+                <div className="text-center">
+                  <input type="submit" value="Sign Up" className="btn_1 full-width" />
                 </div>
               </form>
               <p>Already a customer? <Link to={redirect ? `/login?redirect=${redirect}` : '/login' }>Login </Link></p>

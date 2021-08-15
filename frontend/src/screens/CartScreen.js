@@ -99,19 +99,7 @@ const CartScreen = ({match, location, history}) => {
         }
 			</tbody>
 		</table>
-    <div className="row add_top_30 flex-sm-row-reverse cart_actions">
-				<div className="col-sm-4 text-right">
-					<button type="button" className="btn_1 gray">Update Cart</button>
-				</div>
-				<div className="col-sm-8">
-					<div className="apply-coupon">
-						<div className="form-group form-inline">
-							<input type="text" name="coupon-code" value="" placeholder="Promo code" className="form-control" /><button type="button" className="btn_1 outline">Apply Coupon</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			{/* <!-- /cart_actions --> */}
+    
     </div>
     {/* // container */}
 

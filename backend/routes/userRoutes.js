@@ -1,5 +1,5 @@
 import express from 'express'
-import { registerUser, getAllUsers, authUser, getUserProfile, updateUserProfile } from '../controllers/userCtrl.js'
+import { registerUser, getAllUsers, authUser, getUserProfile, updateUserProfile, deleteUser } from '../controllers/userCtrl.js'
 import { protect, restrictTo } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
@@ -9,6 +9,7 @@ router.post('/login', authUser)
 router.route('/profile').get(protect, getUserProfile).patch(protect, updateUserProfile)
 
 router.route('/').get(protect, restrictTo('admin'), getAllUsers).post(registerUser)
+router.route('/:id').delete(protect, restrictTo('admin'), deleteUser)
 
 
 export default router

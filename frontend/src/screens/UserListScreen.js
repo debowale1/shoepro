@@ -2,20 +2,35 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import { listUsers } from '../actions/userActions'
+import { listUsers, deleteUser } from '../actions/userActions'
+// import { USER_LIST_RESET } from '../constants/userConstants'
 
-const UserListScreen = () => {
+const UserListScreen = ({history}) => {
   const dispatch = useDispatch()
 
   const userList = useSelector(state => state.userList)
   const { loading, users, error } = userList
 
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+  
+  const userDelete = useSelector(state => state.userDelete)
+  const { success:successDelete } = userDelete
+
   useEffect(() => {
-    dispatch(listUsers())
-  }, [dispatch])
+    if(userInfo && userInfo.isAdmin){
+      dispatch(listUsers())
+    }else {
+      history.push('/login')
+    }
+  }, [history, userInfo, dispatch, successDelete])
 
   const editHandler = (id) => {}
-  const deleteHandler = (id) => {}
+  const deleteHandler = (id) => {
+    if(window.confirm('Are you sure?')){
+      dispatch(deleteUser(id))
+    }
+  }
 
   return (
     <>
@@ -53,7 +68,7 @@ const UserListScreen = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map(user => (
+            {users && users.map(user => (
               <tr key={user._id}>
                 <td>
                   <span className="">{user.name}</span>
@@ -78,22 +93,7 @@ const UserListScreen = () => {
           </tbody>
         </table>
 
-    )}
-
-      {/* <div class="row add_top_30 flex-sm-row-reverse cart_actions">
-      <div class="col-sm-4 text-right">
-        <button type="button" class="btn_1 gray">Update Cart</button>
-      </div>
-        <div class="col-sm-8">
-        <div class="apply-coupon">
-          <div class="form-group form-inline">
-            <input type="text" name="coupon-code" value="" placeholder="Promo code" class="form-control"/><button type="button" class="btn_1 outline">Apply Coupon</button>
-          </div>
-        </div>
-      </div>
-    </div> */}
-					{/* <!-- /cart_actions --> */}
-	
+    )}	
 		</div> 
     </>
   )

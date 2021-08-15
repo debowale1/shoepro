@@ -2,14 +2,24 @@ import asyncHandler from 'express-async-handler';
 import User from './../models/userModel.js'
 import generateToken from '../utils/generateToken.js';
 
-// @desc Auth user & get token
+// @desc Admin get all users
 // route GET /api/v1/users
 // access Private/Admin
 const getAllUsers = asyncHandler(async (req, res, next) => {
-  
   const users = await User.find();
   res.json(users)
-  
+})
+
+// @desc Admin delete user
+// route DELETE /api/v1/users/:id
+// access Private/Admin
+const deleteUser = asyncHandler(async (req, res, next) => {
+  const { id } = req.params
+  await User.findByIdAndDelete(id);
+  res.status(204).json({
+    status: 'success',
+    message: 'User Deleted'
+  })
 })
 
 // @desc Register a new User
@@ -123,29 +133,6 @@ const updateUserProfile = asyncHandler(async (req, res, next) => {
       role: updatedUser.role,
       token: generateToken(updatedUser._id)
   })
-
-  // if(user) {
-
-  //   user.name = req.body.name || user.name
-  //   user.email = req.body.email || user.email
-
-  //   if(req.body.password && req.body.passwordConfirm){
-  //     user.password = req.body.password
-  //     // user.passwordConfirm = req.body.passwordConfirm
-  //   }
-  //   const updatedUser = await user.save()
-  
-  //   res.status(200).json({
-  //     status: 'success', 
-  //     data: {
-  //       updatedUser,
-  //       token: generateToken(updatedUser._id)
-  //     }
-  //   })
-  // }else {
-  //   res.status(404)
-  //   throw new Error('User not found')
-  // }
 })
 
-export {getAllUsers, registerUser, authUser, getUserProfile, updateUserProfile }
+export {getAllUsers, deleteUser, registerUser, authUser, getUserProfile, updateUserProfile }
