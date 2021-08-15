@@ -3,22 +3,14 @@ import User from './../models/userModel.js'
 import generateToken from '../utils/generateToken.js';
 
 // @desc Auth user & get token
-// route GET /api/v1/users/login
-// access Public
-const getAllUsers = async (req, res, next) => {
-  try {
-    const users = await User.find();
-    res.status(200).json({
-      status: 'success',
-      length: users.length,
-      data: {
-        users
-      }
-    })
-  } catch (error) {
-    next(error)
-  }
-}
+// route GET /api/v1/users
+// access Private/Admin
+const getAllUsers = asyncHandler(async (req, res, next) => {
+  
+  const users = await User.find();
+  res.json(users)
+  
+})
 
 // @desc Register a new User
 // route GET /api/v1/users

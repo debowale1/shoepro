@@ -21,4 +21,14 @@ const protect = asyncHandler(async (req, res, next) => {
   next()
 })
 
-export { protect }
+const restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if(!roles.includes(req.user.role)) {
+      res.status(401)
+      throw new Error('Not Authorized. This page can only be accessed by admins')
+    }
+    next()
+  }
+}
+
+export { protect, restrictTo }

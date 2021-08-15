@@ -11,6 +11,7 @@ import PaymentScreen from './screens/PaymentScreen'
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import OrderScreen from './screens/OrderScreen'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
+import UserListScreen from './screens/UserListScreen'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/payment' component={PaymentScreen}/>
         <Route path='/login' component={LoginScreen}/>
         <Route path='/register' component={RegisterScreen}/>
+        <Route path='/admin/userlist' component={UserListScreen}/>
         <Route path='/profile' component={ProfileScreen}/>
         <Route path='/product/:id' component={ProductScreen}/>
         <Route path='/cart/:id?' component={CartScreen}/>

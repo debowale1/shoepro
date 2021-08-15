@@ -70,6 +70,17 @@ const Header = () => {
 									</li>
 									)
 								}
+								{ userInfo && userInfo.role === 'admin' && (
+									<li className="submenu">
+									<Link to="#" className="show-submenu">Admin</Link>
+										<ul>
+											<li><Link to="/admin/userlist">Users</Link></li>
+											<li><Link to="/admin/productlist">Products</Link></li>
+											<li><Link to="/admin/orderlist">Orders</Link></li>
+										</ul>
+								</li>
+									) 
+								}
 								
 							</ul>
 						</div>
