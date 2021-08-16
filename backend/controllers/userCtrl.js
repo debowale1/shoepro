@@ -22,6 +22,20 @@ const deleteUser = asyncHandler(async (req, res, next) => {
   })
 })
 
+// @desc Admin delete user
+// route DELETE /api/v1/users/:id
+// access Private/Admin
+const getUserById = asyncHandler(async (req, res, next) => {
+  const { id } = req.params
+  const user = await User.findById(id).select('-password');
+  if(user){
+    res.status(200).json(user)
+  } else {
+    res.status(404)
+    throw new Error('User not Found')
+  }
+})
+
 // @desc Register a new User
 // route GET /api/v1/users
 // access Public
@@ -135,4 +149,42 @@ const updateUserProfile = asyncHandler(async (req, res, next) => {
   })
 })
 
-export {getAllUsers, deleteUser, registerUser, authUser, getUserProfile, updateUserProfile }
+
+// @desc Update user
+// route PATCH /api/v1/users/:id
+// access Private/Admin
+const updateUser = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id)
+    if(!user) {
+      res.status(404)
+      throw new Error('User not found!')
+    }
+    // user.name = req.body.name
+    // user.email = req.body.email
+    // user.isAdmin = req.body.isAdmin || user.isAdmin
+    // const updatedUser = await user.save()
+
+
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, {
+      name: req.body.name,
+      email: req.body.email,
+      isAdmin: req.body.isAdmin
+    },{
+      new: true,
+      runValidators: true
+    })
+    res.status(200).json(updatedUser)
+  })
+
+
+
+export { 
+  getAllUsers, 
+  getUserById, 
+  deleteUser, 
+  registerUser, 
+  authUser, 
+  getUserProfile, 
+  updateUserProfile,
+  updateUser
+ }
