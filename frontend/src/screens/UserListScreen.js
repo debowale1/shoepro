@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import {useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
-// import { USER_LIST_RESET } from '../constants/userConstants'
 
 const UserListScreen = ({history}) => {
   const dispatch = useDispatch()
@@ -25,7 +24,7 @@ const UserListScreen = ({history}) => {
     }
   }, [history, userInfo, dispatch, successDelete])
 
-  const editHandler = (id) => {}
+  
   const deleteHandler = (id) => {
     if(window.confirm('Are you sure?')){
       dispatch(deleteUser(id))
@@ -83,7 +82,7 @@ const UserListScreen = ({history}) => {
                   <strong>$140.00</strong>
                 </td>
                 <td className="options">
-                  <button className="btn_1 full-width cart" onClick={() => editHandler(user._id)}>Edit</button>
+                  <Link to={`/admin/user/${user._id}/edit`} className="btn_1 full-width cart">Edit</Link>
                   <button className="btn_1 full-width cart" onClick={() => deleteHandler(user._id)}>Delete</button>
                 </td>
               </tr>

@@ -1,7 +1,7 @@
 import React, {useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
-import Loader from '../components/Loader'
+// import Loader from '../components/Loader'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
 
@@ -33,8 +33,8 @@ const CartScreen = ({match, location, history}) => {
       <div className="page_header">
         <div className="breadcrumbs">
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Category</a></li>
+            <li><Link to="#">Home</Link></li>
+            <li><Link to="#">Category</Link></li>
             <li>Page active</li>
           </ul>
         </div>
