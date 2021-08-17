@@ -9,7 +9,8 @@ import {
   userDetailsReducer, 
   userUpdateProfileReducer, 
   userListReducer,
-  userDeleteReducer
+  userDeleteReducer,
+  userUpdateReducer
 } from './reducers/userReducers'
 import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducer } from './reducers/orderReducers'
 
@@ -22,19 +23,21 @@ const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ? JSO
 
 //combine our reducers
 const reducers = combineReducers({
-  productList: productListReducer,
-  productDetails: productDetailsReducer,
-  cart: cartReducer,
-  userLogin: userLoginReducer,
-  userRegister: userRegisterReducer,
-  userDetails: userDetailsReducer,
+  productList:       productListReducer,
+  productDetails:    productDetailsReducer,
+  cart:              cartReducer,
+  userLogin:         userLoginReducer,
+  userRegister:      userRegisterReducer,
+  userDetails:       userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
-  userList: userListReducer,
-  userDelete: userDeleteReducer,
-  orderCreate: orderCreateReducer,
-  orderDetails: orderDetailsReducer,
-  orderPay: orderPayReducer,
-  orderListMy: orderListMyReducer,
+  userList:          userListReducer,
+  userDelete:        userDeleteReducer,
+  userUpdate:        userUpdateReducer,
+  orderCreate:       orderCreateReducer,
+  orderDetails:      orderDetailsReducer,
+  orderPay:          orderPayReducer,
+  orderListMy:       orderListMyReducer,
+
 })
 
 

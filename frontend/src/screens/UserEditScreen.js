@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import { getUserDetails } from '../actions/userActions'
+import { getUserDetails, updateUser } from '../actions/userActions'
+import { USER_UPDATE_RESET } from '../constants/userConstants'
 
 const UserEditScreen = ({match, location, history}) => {
   const userId = match.params.id
@@ -16,20 +17,30 @@ const UserEditScreen = ({match, location, history}) => {
   const userDetails = useSelector(state => state.userDetails)
   const {loading, error, user } = userDetails
 
+  const userUpdate = useSelector(state => state.userUpdate)
+  const {loading:loadingUpdate, error:errorUpdate, success:successUpdate } = userUpdate
+
   useEffect(() => {
-    if(!user.name || user._id !== userId){
-      dispatch(getUserDetails(userId))
+    if(successUpdate){
+      dispatch({type: USER_UPDATE_RESET})
+      history.push('/admin/userlist')
     }else{
-      setName(user.name)
-      setEmail(user.email)
-      setIsAdmin(user.isAdmin)
+      if(!user.name || user._id !== userId){
+        dispatch(getUserDetails(userId))
+      }else{
+        setName(user.name)
+        setEmail(user.email)
+        setIsAdmin(user.isAdmin)
+      }
+
     }
-  }, [dispatch, user, userId])
+  }, [dispatch, user, userId, successUpdate, history])
 
 
 
   const submitHandler = (e) => {
     e.preventDefault()
+    dispatch(updateUser({ _id: userId, name, email, isAdmin }))
     
   }
   return (
@@ -49,6 +60,8 @@ const UserEditScreen = ({match, location, history}) => {
       <div className="row justify-content-center">
         <div className="col-xl-6 col-lg-6 col-md-8">
           <h5>Edit User: {userId}</h5>
+          { loadingUpdate && <Loader />}
+          { errorUpdate && <p>{errorUpdate}</p>}
           <div className="box_account">
             {/* <h3 className="client">Already Client</h3> */}
             <div className="form_container">
@@ -76,16 +89,6 @@ const UserEditScreen = ({match, location, history}) => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                {/* <div className="checkboxes float-left">
-                    <label className="container_check">Is Admin
-                      <input 
-                        type="checkbox"
-                        checked={isAdmin} 
-                        onChange={(e) => setIsAdmin(e.target.checked)}
-                      />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div> */}
                 <div className="form-group">
                   <label htmlFor="isadmin">Is Admin</label>
                   <input 
