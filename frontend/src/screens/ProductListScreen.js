@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import { listProducts } from '../actions/productActions'
+import { listProducts, deleteProduct } from '../actions/productActions'
 
 const ProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -10,21 +10,24 @@ const ProductListScreen = ({ history, match }) => {
   const productList = useSelector(state => state.productList)
   const { loading, products, error } = productList
 
+  const productDelete = useSelector(state => state.productDelete)
+  const { loading:loadingDelete, success:successDelete, error:errorDelete } = productDelete
+
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
-  useEffect(() => {
+  useEffect(() => { 
     if(userInfo && userInfo.isAdmin){
       dispatch(listProducts())
     }else {
       history.push('/login')
     }
-  }, [history, userInfo, dispatch])
+  }, [history, userInfo, dispatch, successDelete])
 
   
   const deleteHandler = (id) => {
     if(window.confirm('Are you sure?')){
-      // dispatch(deleteUser(id))
+      dispatch(deleteProduct(id))
     }
   }
   const createProductHandler = (id) => {
@@ -45,13 +48,14 @@ const ProductListScreen = ({ history, match }) => {
 					<li>Products</li>
 				</ul>
 			</div>
+			<h1>Product List</h1>
       <div className="row">
         <div className="col-md-3">
           <button className="btn_1 full-width cart" onClick={createProductHandler}>CReate Product</button>
         </div>
       </div>
-			<h1>Product List</h1>
-
+      {loadingDelete && <Loader />}
+      {errorDelete && <p style={{'color': 'red'}}>{errorDelete}</p>}
 		</div>
     { loading ? <Loader /> : error ? <p>{error}</p> : (
       <table className="table table-striped cart-list">

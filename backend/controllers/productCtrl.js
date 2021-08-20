@@ -11,9 +11,6 @@ const getAllProducts = asyncHandler(async (req, res, next) => {
   
   const allowedFields = ['sort', 'fields', 'page', 'limit'];
   allowedFields.forEach(el => delete queryObj[el]);
-  
-  // console.log(req.query)
-  // console.log(queryObj)
 
   let query =  Product.find(queryObj);
 
@@ -86,5 +83,24 @@ const createProduct = asyncHandler(async(req, res, next) => {
       }
     })
 })
+// @desc Delete a product
+// route DELETE /api/v1/products/:id
+// access Private/Admin
 
-export {getAllProducts, getProduct, createProduct}
+const deleteProduct = asyncHandler(async(req, res, next) => {
+  
+    const product = await Product.findById(req.params.id);
+    if(!product){
+      res.status(404)
+      throw new Error('Product not found')
+    }else{
+      await product.remove()
+      res.json({
+        status: 'success',
+        message: 'product deleted'
+      })
+    }
+    
+})
+
+export {getAllProducts, getProduct, createProduct, deleteProduct}
