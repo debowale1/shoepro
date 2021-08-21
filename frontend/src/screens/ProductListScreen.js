@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import { listProducts, deleteProduct } from '../actions/productActions'
+import { listProducts, deleteProduct, createProduct } from '../actions/productActions'
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -13,16 +14,27 @@ const ProductListScreen = ({ history, match }) => {
   const productDelete = useSelector(state => state.productDelete)
   const { loading:loadingDelete, success:successDelete, error:errorDelete } = productDelete
 
+  const productCreate = useSelector(state => state.productCreate)
+  const { 
+    loading:loadingCreate, 
+    success:successCreate, 
+    error:errorCreate, 
+    product:createdProduct } = productCreate
+
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
   useEffect(() => { 
-    if(userInfo && userInfo.isAdmin){
-      dispatch(listProducts())
-    }else {
+    dispatch({type: PRODUCT_CREATE_RESET})
+    if(!userInfo.isAdmin){
       history.push('/login')
     }
-  }, [history, userInfo, dispatch, successDelete])
+    if(successCreate){
+      history.push(`/admin/product/${createdProduct._id}/edit`)
+    }else{
+      dispatch(listProducts())
+    }
+  }, [history, userInfo, dispatch, successDelete, successCreate, createdProduct])
 
   
   const deleteHandler = (id) => {
@@ -30,10 +42,8 @@ const ProductListScreen = ({ history, match }) => {
       dispatch(deleteProduct(id))
     }
   }
-  const createProductHandler = (id) => {
-    
-      // dispatch(deleteUser(id))
-    
+  const createProductHandler = () => {
+      dispatch(createProduct())
   }
 
 
@@ -56,6 +66,8 @@ const ProductListScreen = ({ history, match }) => {
       </div>
       {loadingDelete && <Loader />}
       {errorDelete && <p style={{'color': 'red'}}>{errorDelete}</p>}
+      {loadingCreate && <Loader />}
+      {errorCreate && <p style={{'color': 'red'}}>{errorCreate}</p>}
 		</div>
     { loading ? <Loader /> : error ? <p>{error}</p> : (
       <table className="table table-striped cart-list">
