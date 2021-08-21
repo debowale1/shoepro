@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import { listProductDetails } from '../actions/productActions'
+import { listProductDetails, updateProduct } from '../actions/productActions'
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 // import { USER_UPDATE_RESET } from '../constants/userConstants'
 
 const ProductEditScreen = ({match, location, history}) => {
@@ -21,8 +22,15 @@ const ProductEditScreen = ({match, location, history}) => {
   const productDetails = useSelector(state => state.productDetails)
   const {loading, error, product } = productDetails
 
+  const productUpdate = useSelector(state => state.productUpdate)
+  const {loading:loadingUpdate, error:errorUpdate, success:successUpdate } = productUpdate
+
   useEffect(() => {
-    
+
+    if(successUpdate){
+      dispatch({ type: PRODUCT_UPDATE_RESET})
+      history.push('/admin/productlist')
+    }else{
       if(!product.name || product._id !== productId){
         dispatch(listProductDetails(productId))
       }else{
@@ -34,14 +42,25 @@ const ProductEditScreen = ({match, location, history}) => {
         setCategory(product.category)
         setDescription(product.description)
       }
-  }, [dispatch, product, productId, history])
+
+    }
+    
+  }, [dispatch, product, productId, history, successUpdate])
 
 
 
   const submitHandler = (e) => {
     e.preventDefault()
-    // dispatch(updateUser({ _id: userId, name, email, isAdmin }))
-    
+    dispatch(updateProduct({ 
+      _id: productId, 
+      name, 
+      price, 
+      brand, 
+      category, 
+      description, 
+      image, 
+      countInStock,  
+    }))
   }
   return (
     <main className="bg_gray">
@@ -60,8 +79,8 @@ const ProductEditScreen = ({match, location, history}) => {
       <div className="row justify-content-center">
         <div className="col-xl-6 col-lg-6 col-md-8">
           <h5>Edit Product: {productId}</h5>
-          {/* { loadingUpdate && <Loader />}
-          { errorUpdate && <p>{errorUpdate}</p>} */}
+          { loadingUpdate && <Loader />}
+          { errorUpdate && <p>{errorUpdate}</p>}
           <div className="box_account">
             {/* <h3 className="client">Already Client</h3> */}
             <div className="form_container">
