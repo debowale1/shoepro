@@ -86,7 +86,7 @@ const OrderListScreen = ({history}) => {
                   {/* <strong>{order.isDelivered}</strong> */}
                 </td>
                 <td className="options">
-                  <Link to={`/admin/order/${order._id}/`} className="btn_1 full-width cart">Details</Link>
+                  <Link to={`/order/${order._id}`} className="btn_1 full-width cart">Details</Link>
                   {/* <button className="btn_1 full-width cart" onClick={() => deleteHandler(user._id)}>Delete</button> */}
                 </td>
               </tr>

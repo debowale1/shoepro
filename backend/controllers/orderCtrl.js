@@ -58,9 +58,9 @@ const getOrderById = asyncHandler( async (req, res, next) => {
   res.status(200).json(order)
 })
 
-// @desc Update order by ID
+// @desc Update order to paid
 // route POST /api/v1/orders/id/pay
-// access Private
+// access Private/Admin
 
 const updateOrderToPaid = asyncHandler( async (req, res, next) => {
   const { id } = req.params
@@ -76,6 +76,27 @@ const updateOrderToPaid = asyncHandler( async (req, res, next) => {
       update_time: req.body.update_time,
       email_address: req.body.payer.email_address
     }
+
+    const updatedOrder = await order.save()
+    res.status(200).json(updatedOrder)
+  }
+  
+  res.status(500)
+  throw new Error('There was a problem updating the order')
+  return
+})
+// @desc Update order to delivered
+// route POST /api/v1/orders/:id/deliver
+// access Private/Admin
+
+const updateOrderToDelivered = asyncHandler( async (req, res, next) => {
+  const { id } = req.params
+
+  const order = await Order.findById(id)
+
+  if(order){
+    order.isDelivered = true
+    order.deliveredAt = Date.now()
 
     const updatedOrder = await order.save()
     res.status(200).json(updatedOrder)
@@ -104,4 +125,4 @@ const getOrders = asyncHandler( async (req, res, next) => {
   const orders = await Order.find()
   res.json(orders)
 })
-export { createOrderItem, getOrderById, updateOrderToPaid, getMyOrders, getOrders }
+export { createOrderItem, getOrderById, updateOrderToPaid, updateOrderToDelivered, getMyOrders, getOrders }
